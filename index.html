@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404LIFE | 人生整備中。</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#ccff00', // 蛍光イエロー
+                        bgBase: '#000000', // 真っ黒
+                        lineDark: '#222222', // ダークグレーの罫線
+                        textMuted: '#888888', // くすんだ白
+                    },
+                    fontFamily: {
+                        'blackops': ['"Black Ops One"', 'system-ui'],
+                        'sans': ['"Noto Sans JP"', 'sans-serif'],
+                        'mono': ['"Share Tech Mono"', 'monospace'],
+                    },
+                    letterSpacing: {
+                        'super-wide': '0.2em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 選択時のハイライト色を変更 */
+        ::selection {
+            background: #ccff00;
+            color: #000000;
+        }
+
+        /* ホバー時の線のエフェクト */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ccff00;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- コンテンツ全体を中央に寄せるラッパー (PC表示時の間延び防止) -->
+    <div class="max-w-2xl mx-auto w-full px-5 md:px-8 border-x border-lineDark min-h-screen flex flex-col pt-12 md:pt-16">
+
+        <header class="mb-12">
+            <!-- Logo area -->
+            <div class="flex items-end gap-2 mb-8">
+                <h1 class="font-blackops text-3xl tracking-wide flex items-center">
+                    <span class="text-accent">404</span>
+                    <span class="text-white ml-2">LIFE</span>
+                    <span class="text-accent ml-3">/</span>
+                </h1>
+            </div>
+
+            <!-- Navigation Grid -->
+            <nav class="grid grid-cols-3 gap-y-4 gap-x-2 border-b border-t border-lineDark py-5">
+                <a href="#" class="font-blackops text-accent text-sm md:text-base nav-link inline-block w-max">TOP</a>
+                <a href="#" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max">ABOUT 404</a>
+                <a href="#" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max">JOURNAL</a>
+                <a href="#" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max">VISUAL</a>
+                <a href="#" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max">GEAR</a>
+                <a href="#sns-section" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max flex items-center gap-1">
+                    SNS
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-white opacity-70">
+                        <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </nav>
+        </header>
+
+        <main class="flex-grow">
+            <section class="mb-20">
+                <!-- Top small texts -->
+                <div class="flex justify-between items-center mb-6 text-textMuted font-mono text-xs md:text-sm">
+                    <p class="tracking-widest">STREET / GARAGE / LIFE</p>
+                    <p class="tracking-widest">GARAGE No. 404</p>
+                </div>
+                
+                <p class="text-accent font-mono text-xs md:text-sm mb-6 tracking-widest">/// STILL UNDER MAINTENANCE</p>
+
+                <!-- Main Copy -->
+                <div class="mb-4">
+                    <h2 class="font-blackops text-7xl md:text-8xl leading-none flex items-end">
+                        <span class="text-white">404</span>
+                        <span class="text-accent ml-2">LIFE.</span>
+                    </h2>
+                </div>
+                
+                <!-- Sub Copy -->
+                <p class="font-bold text-2xl md:text-3xl tracking-widest mb-12">人生整備中。</p>
+
+                <!-- Main Visual Image -->
+                <div class="relative w-full aspect-square border border-lineDark p-1">
+                    <img src="image.png" alt="404 LIFE Main Visual" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x600/1a1a1a/ccff00?text=404+LIFE+IMAGE'">
+                </div>
+                <p class="font-mono text-textMuted text-xs mt-3 tracking-super-wide">JINZOU NINGEN 404</p>
+            </section>
+
+            <section id="sns-section" class="mb-24 pt-12">
+                <h3 class="text-3xl font-bold mb-8 border-b border-lineDark pb-6 tracking-wide">今日の404は、こっち。</h3>
+
+                <!-- Instagram Link -->
+                <a href="https://www.instagram.com/4.0.4.life?stkn=OG9mbDc1emRiZWU2&utm_source=qr" target="_blank" rel="noopener noreferrer" class="block border-b border-lineDark py-8 group transition-colors hover:bg-zinc-900/50 -mx-5 px-5 md:-mx-8 md:px-8">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-textMuted text-sm mb-3 font-medium tracking-wide">日常と世界観</p>
+                            <h4 class="text-4xl md:text-5xl font-bold mb-3 group-hover:text-accent transition-colors">Instagram</h4>
+                            <p class="font-mono text-textMuted text-sm tracking-widest">@4.0.4.life</p>
+                        </div>
+                        <div class="text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 md:w-12 md:h-12">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Threads Link -->
+                <a href="https://www.threads.com/@4.0.4.life?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" class="block border-b border-lineDark py-8 group transition-colors hover:bg-zinc-900/50 -mx-5 px-5 md:-mx-8 md:px-8">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-textMuted text-sm mb-3 font-medium tracking-wide">言葉と考えごと</p>
+                            <h4 class="text-4xl md:text-5xl font-bold mb-3 group-hover:text-accent transition-colors">Threads</h4>
+                            <p class="font-mono text-textMuted text-sm tracking-widest">@4.0.4.life</p>
+                        </div>
+                        <div class="text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 md:w-12 md:h-12">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </section>
+        </main>
+
+        <footer class="pb-12 border-t border-lineDark pt-10">
+            <div class="flex justify-between items-end mb-10">
+                <div class="flex items-end gap-2">
+                    <h2 class="font-blackops text-2xl md:text-3xl tracking-wide flex items-center">
+                        <span class="text-accent">404</span>
+                        <span class="text-white ml-2">LIFE</span>
+                        <span class="text-accent ml-3">/</span>
+                    </h2>
+                </div>
+                <p class="text-sm font-bold tracking-widest text-textMuted">人生整備中。</p>
+            </div>
+
+            <div class="border-b border-lineDark pb-6 mb-6">
+                <a href="#" class="font-mono text-sm tracking-widest hover:text-accent transition-colors flex items-center gap-2 uppercase">
+                    Back To Top 
+                    <span class="text-textMuted text-xs">↑</span>
+                </a>
+            </div>
+
+            <div class="flex flex-wrap justify-between items-end gap-6">
+                <nav class="flex flex-wrap gap-x-6 gap-y-3">
+                    <a href="#" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">ABOUT 404</a>
+                    <a href="#" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">JOURNAL</a>
+                    <a href="#" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">VISUAL</a>
+                    <a href="#" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">GEAR</a>
+                    <a href="#sns-section" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">SNS</a>
+                </nav>
+                <p class="font-sans text-xs text-textMuted tracking-wider">© 404 LIFE</p>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
