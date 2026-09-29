@@ -626,6 +626,21 @@ html[data-boot="short"] .sys-boot__line {
   }
 }
 
+/* 4項目のナビ（TOP）：スマホでも1段で右寄せ */
+.sys-nav.sys-nav--4 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sys-nav.sys-nav--4 li + li::before {
+  content: "";
+  position: static;
+  width: 1px;
+  height: 16px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.55);
+}
+
 /* ---------- プロフィール ---------- */
 
 .sys-profile {
