@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
     <title>404LIFE | 人生整備中。</title>
-    
+
+    <!-- BOOT判定：同一セッションの再表示は短縮、動きを減らす設定では表示しない -->
+    <script>
+        (function (h) {
+            try {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                var seen = null;
+                try { seen = sessionStorage.getItem('404-life-boot'); sessionStorage.setItem('404-life-boot', '1'); } catch (e) {}
+                h.setAttribute('data-boot', seen ? 'short' : 'full');
+            } catch (e) {}
+        })(document.documentElement);
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    
+
+    <!-- 404 LIFE SYSTEM（UI・演出。背景画像の差し替えもこのファイル） -->
+    <link rel="preload" as="image" href="assets/garage-bg.webp" type="image/webp">
+    <link rel="stylesheet" href="assets/system.css">
+    <script src="assets/system.js" defer></script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -43,159 +61,290 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        
+
         /* 選択時のハイライト色を変更 */
         ::selection {
             background: #ccff00;
             color: #000000;
         }
-
-        /* ホバー時の線のエフェクト */
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: #ccff00;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
     </style>
 </head>
-<body class="font-sans min-h-screen flex flex-col justify-between">
+<body class="font-sans min-h-screen">
 
-    <!-- コンテンツ全体を中央に寄せるラッパー (PC表示時の間延び防止) -->
-    <div class="max-w-2xl mx-auto w-full px-5 md:px-8 border-x border-lineDark min-h-screen flex flex-col pt-12 md:pt-16">
+    <a href="#main" class="sys-skip">本文へスキップ</a>
 
-        <header class="mb-12">
-            <!-- Logo area -->
-            <div class="flex items-end gap-2 mb-8">
-                <h1 class="font-blackops text-3xl tracking-wide flex items-center">
-                    <span class="text-accent">404</span>
-                    <span class="text-white ml-2">LIFE</span>
-                    <span class="text-accent ml-3">/</span>
-                </h1>
+    <!-- 背景：ガレージ（画像は assets/system.css の --sys-bg-image） -->
+    <div class="sys-bg" aria-hidden="true"><div class="sys-bg__img"></div></div>
+
+    <!-- BOOT演出（初回 約1.9秒 / 同一セッション再表示 約0.6秒 / タップでスキップ） -->
+    <div class="sys-boot" aria-hidden="true">
+        <div class="sys-boot__panel">
+            <p class="sys-boot__head"><span>404 // LIFE SYSTEM</span><span>No.404</span></p>
+            <ol class="sys-boot__log">
+                <li style="--d:0">BOOTING...</li>
+                <li style="--d:1">SYSTEM CHECK...</li>
+                <li style="--d:2"><span>BODY</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:3"><span>GARAGE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:4"><span>PLAY MODE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+            </ol>
+            <div class="sys-boot__bar"><span></span></div>
+            <p class="sys-boot__logo"><span>404</span> LIFE</p>
+            <p class="sys-boot__jp">人生整備中。</p>
+        </div>
+        <p class="sys-boot__skip">TAP TO SKIP</p>
+        <div class="sys-boot__line"></div>
+    </div>
+
+    <!-- CRT／監視モニター効果（操作を妨げない） -->
+    <div class="sys-crt" aria-hidden="true"><span class="sys-crt__roll"></span></div>
+
+    <div id="top" class="sys-page">
+        <!-- 左右のレール -->
+        <div class="sys-rails" aria-hidden="true" data-flicker></div>
+
+        <header class="sys-head">
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+
+            <div class="sys-head__top">
+                <div class="sys-sysmenu">
+                    <p class="m-0" data-glitch="soft">404 LIFE SYSTEM</p>
+                    <ul>
+                        <li>CAR</li>
+                        <li>FASHION</li>
+                        <li>GEAR</li>
+                        <li>PLAY</li>
+                        <li>LIFE</li>
+                    </ul>
+                </div>
+                <p class="sys-id">
+                    <span class="sys-barcode" aria-hidden="true" data-flicker></span>
+                    <span data-glitch="soft">JINZOU NINGEN 404</span>
+                </p>
             </div>
 
-            <!-- Navigation Grid -->
-            <nav class="grid grid-cols-3 gap-y-4 gap-x-2 border-b border-t border-lineDark py-5">
-                <a href="#" class="font-blackops text-accent text-sm md:text-base nav-link inline-block w-max">TOP</a>
-                <a href="#" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max">ABOUT 404</a>
-                <a href="#" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max">JOURNAL</a>
-                <a href="#" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max">VISUAL</a>
-                <a href="#" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max">GEAR</a>
-                <a href="#sns-section" class="font-blackops text-white text-sm md:text-base nav-link inline-block w-max flex items-center gap-1">
-                    SNS
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-white opacity-70">
-                        <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
-                    </svg>
-                </a>
+            <!-- ABOUT 404 / JOURNAL / VISUAL / GEAR はページ未制作のため仮リンク（押しても移動しない） -->
+            <nav aria-label="メニュー">
+                <ul class="sys-nav">
+                    <li><a href="#top" aria-current="page"><span data-glitch="soft">TOP</span></a></li>
+                    <li><a href="#">ABOUT 404</a></li>
+                    <li><a href="#">JOURNAL</a></li>
+                    <li><a href="#">VISUAL</a></li>
+                    <li><a href="#">GEAR</a></li>
+                    <li><a href="#sns-section">SNS</a></li>
+                </ul>
             </nav>
+
+            <div class="sys-profile">
+                <div class="sys-avatar" data-flicker>
+                    <img src="assets/404-avatar.webp" width="240" height="240" alt="マグカップを持つ人造人間404">
+                </div>
+                <div class="sys-profile__body">
+                    <p class="sys-profile__name" data-glitch="soft">JINZOU NINGEN 404</p>
+                    <ul class="sys-profile__links">
+                        <li>
+                            <a class="sys-sns-btn" href="https://www.instagram.com/4.0.4.life?stkn=OG9mbDc1emRiZWU2&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram @4.0.4.life">
+                                <span class="sys-sns-btn__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+                                </span>
+                                <span class="sys-sns-btn__handle">@4.0.4.life</span>
+                                <span class="sys-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M12 6l6 6-6 6"/></svg></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sys-sns-btn" href="https://www.threads.com/@4.0.4.life?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" aria-label="Threads @4.0.4.life">
+                                <span class="sys-sns-btn__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M16.2 11.3c-.4-2.3-2-3.5-4.2-3.5-2.4 0-4 1.6-4 3.7 0 2 1.5 3.3 3.5 3.3 2.6 0 4.1-1.9 4.1-4.9"/><path d="M15.6 9.9c3 .9 4.2 2.9 3.5 5.2-.9 3-3.7 5.2-7.4 5.2C7 20.3 4 16.9 4 12S7 3.7 11.9 3.7c3.6 0 6 1.7 7.1 4.6"/></svg>
+                                </span>
+                                <span class="sys-sns-btn__handle">@4.0.4.life</span>
+                                <span class="sys-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M12 6l6 6-6 6"/></svg></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </header>
 
-        <main class="flex-grow">
-            <section class="mb-20">
-                <!-- Top small texts -->
-                <div class="flex justify-between items-center mb-6 text-textMuted font-mono text-xs md:text-sm">
-                    <p class="tracking-widest">STREET / GARAGE / LIFE</p>
-                    <p class="tracking-widest">GARAGE No. 404</p>
-                </div>
-                
-                <p class="text-accent font-mono text-xs md:text-sm mb-6 tracking-widest">/// STILL UNDER MAINTENANCE</p>
+        <main id="main">
+            <!-- HERO：404のOSのホーム画面 -->
+            <section class="sys-hero" aria-labelledby="hero-title">
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
 
-                <!-- Main Copy -->
-                <div class="mb-4">
-                    <h2 class="font-blackops text-7xl md:text-8xl leading-none flex items-end">
-                        <span class="text-white">404</span>
-                        <span class="text-accent ml-2">LIFE.</span>
-                    </h2>
+                <div data-sys-load>
+                    <div class="sys-hero__row">
+                        <p>STREET / GARAGE / LIFE</p>
+                        <p><span class="sys-hero__garage" data-glitch="soft">GARAGE No. 404</span></p>
+                    </div>
+                    <p class="sys-hero__maint sys-cursor">/// STILL UNDER MAINTENANCE</p>
                 </div>
-                
-                <!-- Sub Copy -->
-                <p class="font-bold text-2xl md:text-3xl tracking-widest mb-12">人生整備中。</p>
 
-                <!-- Main Visual Image -->
-                <div class="relative w-full aspect-square border border-lineDark p-1">
-                    <img src="image.png" alt="404 LIFE Main Visual" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x600/1a1a1a/ccff00?text=404+LIFE+IMAGE'">
+                <div class="sys-hero__main" data-sys-load style="--sys-delay:80ms">
+                    <h1 id="hero-title" class="sys-hero-title" data-glitch>
+                        <span class="is-white">404</span>
+                        <span class="is-accent">LIFE.</span>
+                    </h1>
+                    <div class="sys-hero__status" aria-label="システム状態">
+                        <p class="sys-hero__online">SYSTEM<br>ONLINE<i class="sys-hero__dot" aria-hidden="true" data-flicker></i></p>
+                        <p class="sys-hero__motto" data-glitch="soft">SAME SHIT<br>DIFFERENT DAY<br>STILL GOOD</p>
+                    </div>
                 </div>
-                <p class="font-mono text-textMuted text-xs mt-3 tracking-super-wide">JINZOU NINGEN 404</p>
+
+                <div data-sys-load style="--sys-delay:160ms">
+                    <p class="sys-hero__jp" data-glitch="soft">人生整備中。</p>
+                    <p class="sys-hero__name">JINZOU NINGEN 404</p>
+                    <ul class="sys-hero__areas" aria-label="扱う領域">
+                        <li>CAR</li>
+                        <li>FASHION</li>
+                        <li>GEAR</li>
+                        <li>PLAY</li>
+                        <li>LIFE</li>
+                    </ul>
+                </div>
+
+                <div class="sys-hero__space">
+                    <a class="sys-scroll" href="#menu" aria-label="メニューへ" data-flicker>
+                        <svg viewBox="0 0 12 22" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 1v19M1 15l5 5 5-5"/></svg>
+                        <span>SCROLL</span>
+                    </a>
+                </div>
             </section>
 
-            <section id="sns-section" class="mb-24 pt-12">
-                <h3 class="text-3xl font-bold mb-8 border-b border-lineDark pb-6 tracking-wide">今日の404は、こっち。</h3>
+            <!-- メニュー 01〜05 -->
+            <section id="menu" class="sys-menu" aria-labelledby="menu-title">
+                <h2 id="menu-title" class="sys-sr">メニュー</h2>
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--l sys-cross--bottom" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--bottom" aria-hidden="true"></i>
+                <ol>
+                    <li data-sys-load>
+                        <a class="sys-menu__link" href="#">
+                            <span class="sys-menu__no" data-glitch>01</span>
+                            <span class="sys-menu__body"><span class="sys-menu__title">ABOUT 404</span><span class="sys-menu__jp">404について</span></span>
+                            <span class="sys-menu__side" aria-hidden="true">
+                                <span class="sys-menu__sys" data-glitch="soft">SYSTEM // <em>01</em></span>
+                                <span class="sys-menu__slash">//////</span>
+                                <span class="sys-go" data-flicker><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h13M12 6l6 6-6 6"/></svg></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li data-sys-load style="--sys-delay:60ms">
+                        <a class="sys-menu__link" href="#">
+                            <span class="sys-menu__no" data-glitch>02</span>
+                            <span class="sys-menu__body"><span class="sys-menu__title">JOURNAL</span><span class="sys-menu__jp">記録する</span></span>
+                            <span class="sys-menu__side" aria-hidden="true">
+                                <span class="sys-menu__sys" data-glitch="soft">SYSTEM // <em>02</em></span>
+                                <span class="sys-menu__slash">//////</span>
+                                <span class="sys-go" data-flicker><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h13M12 6l6 6-6 6"/></svg></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li data-sys-load style="--sys-delay:120ms">
+                        <a class="sys-menu__link" href="#">
+                            <span class="sys-menu__no" data-glitch>03</span>
+                            <span class="sys-menu__body"><span class="sys-menu__title">VISUAL</span><span class="sys-menu__jp">写真と映像</span></span>
+                            <span class="sys-menu__side" aria-hidden="true">
+                                <span class="sys-menu__sys" data-glitch="soft">SYSTEM // <em>03</em></span>
+                                <span class="sys-menu__slash">//////</span>
+                                <span class="sys-go" data-flicker><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h13M12 6l6 6-6 6"/></svg></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li data-sys-load style="--sys-delay:180ms">
+                        <a class="sys-menu__link" href="#">
+                            <span class="sys-menu__no" data-glitch>04</span>
+                            <span class="sys-menu__body"><span class="sys-menu__title">GEAR</span><span class="sys-menu__jp">使ってるモノ</span></span>
+                            <span class="sys-menu__side" aria-hidden="true">
+                                <span class="sys-menu__sys" data-glitch="soft">SYSTEM // <em>04</em></span>
+                                <span class="sys-menu__slash">//////</span>
+                                <span class="sys-go" data-flicker><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h13M12 6l6 6-6 6"/></svg></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li data-sys-load style="--sys-delay:240ms">
+                        <a class="sys-menu__link" href="#sns-section">
+                            <span class="sys-menu__no" data-glitch>05</span>
+                            <span class="sys-menu__body"><span class="sys-menu__title">SNS</span><span class="sys-menu__jp">つながる</span></span>
+                            <span class="sys-menu__side" aria-hidden="true">
+                                <span class="sys-menu__sys" data-glitch="soft">SYSTEM // <em>05</em></span>
+                                <span class="sys-menu__slash">//////</span>
+                                <span class="sys-go" data-flicker><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h13M12 6l6 6-6 6"/></svg></span>
+                            </span>
+                        </a>
+                    </li>
+                </ol>
+            </section>
 
-                <!-- Instagram Link -->
-                <a href="https://www.instagram.com/4.0.4.life?stkn=OG9mbDc1emRiZWU2&utm_source=qr" target="_blank" rel="noopener noreferrer" class="block border-b border-lineDark py-8 group transition-colors hover:bg-zinc-900/50 -mx-5 px-5 md:-mx-8 md:px-8">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-textMuted text-sm mb-3 font-medium tracking-wide">日常と世界観</p>
-                            <h4 class="text-4xl md:text-5xl font-bold mb-3 group-hover:text-accent transition-colors">Instagram</h4>
-                            <p class="font-mono text-textMuted text-sm tracking-widest">@4.0.4.life</p>
-                        </div>
-                        <div class="text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 md:w-12 md:h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                            </svg>
-                        </div>
-                    </div>
-                </a>
+            <!-- 05 SNS の行き先 -->
+            <section id="sns-section" class="sys-sns" aria-labelledby="sns-title">
+                <div class="sys-sec-head" data-sys-load>
+                    <span>05 // SNS</span>
+                    <span class="sys-sec-head__state"><i class="sys-lamp" data-flicker></i>EXTERNAL</span>
+                </div>
 
-                <!-- Threads Link -->
-                <a href="https://www.threads.com/@4.0.4.life?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" class="block border-b border-lineDark py-8 group transition-colors hover:bg-zinc-900/50 -mx-5 px-5 md:-mx-8 md:px-8">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-textMuted text-sm mb-3 font-medium tracking-wide">言葉と考えごと</p>
-                            <h4 class="text-4xl md:text-5xl font-bold mb-3 group-hover:text-accent transition-colors">Threads</h4>
-                            <p class="font-mono text-textMuted text-sm tracking-widest">@4.0.4.life</p>
-                        </div>
-                        <div class="text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 md:w-12 md:h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                            </svg>
-                        </div>
+                <div data-sys-load style="--sys-delay:60ms">
+                    <h2 id="sns-title" class="sys-sns__title" data-glitch>今日の404は、こっち。</h2>
+                </div>
+
+                <div class="sys-links">
+                    <!-- Instagram Link -->
+                    <div data-sys-load style="--sys-delay:100ms">
+                        <a href="https://www.instagram.com/4.0.4.life?stkn=OG9mbDc1emRiZWU2&utm_source=qr" target="_blank" rel="noopener noreferrer" class="sys-link">
+                            <span class="sys-link__ch" aria-hidden="true">CH.01</span>
+                            <div class="flex justify-between items-center gap-4">
+                                <div>
+                                    <p class="text-textMuted text-sm mb-3 font-medium tracking-wide">日常と世界観</p>
+                                    <h3 class="sys-link__name text-4xl md:text-5xl font-bold mb-3">Instagram</h3>
+                                    <p class="font-mono text-textMuted text-sm tracking-widest">@4.0.4.life</p>
+                                </div>
+                                <div class="sys-link__arrow text-accent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 md:w-12 md:h-12" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+
+                    <!-- Threads Link -->
+                    <div data-sys-load style="--sys-delay:160ms">
+                        <a href="https://www.threads.com/@4.0.4.life?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" class="sys-link">
+                            <span class="sys-link__ch" aria-hidden="true">CH.02</span>
+                            <div class="flex justify-between items-center gap-4">
+                                <div>
+                                    <p class="text-textMuted text-sm mb-3 font-medium tracking-wide">言葉と考えごと</p>
+                                    <h3 class="sys-link__name text-4xl md:text-5xl font-bold mb-3">Threads</h3>
+                                    <p class="font-mono text-textMuted text-sm tracking-widest">@4.0.4.life</p>
+                                </div>
+                                <div class="sys-link__arrow text-accent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 md:w-12 md:h-12" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </section>
         </main>
 
-        <footer class="pb-12 border-t border-lineDark pt-10">
-            <div class="flex justify-between items-end mb-10">
-                <div class="flex items-end gap-2">
-                    <h2 class="font-blackops text-2xl md:text-3xl tracking-wide flex items-center">
-                        <span class="text-accent">404</span>
-                        <span class="text-white ml-2">LIFE</span>
-                        <span class="text-accent ml-3">/</span>
-                    </h2>
+        <footer class="sys-foot" data-sys-load>
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+            <div class="sys-foot__grid">
+                <div>
+                    <p class="sys-foot__sys">404 // LIFE SYSTEM<br>ACCESS : GRANTED<br>STATUS : ONLINE<span class="sys-foot__block" aria-hidden="true"></span></p>
+                    <span class="sys-bar-mark" aria-hidden="true" data-flicker></span>
                 </div>
-                <p class="text-sm font-bold tracking-widest text-textMuted">人生整備中。</p>
-            </div>
-
-            <div class="border-b border-lineDark pb-6 mb-6">
-                <a href="#" class="font-mono text-sm tracking-widest hover:text-accent transition-colors flex items-center gap-2 uppercase">
-                    Back To Top 
-                    <span class="text-textMuted text-xs">↑</span>
+                <a class="sys-foot__top" href="#top" aria-label="ページの先頭へ">
+                    <svg viewBox="0 0 12 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 17V2M1 7l5-5 5 5"/></svg>
+                    <span>SCROLL</span>
                 </a>
+                <p class="sys-foot__right"><span data-glitch="soft">GARAGE No.404</span><span class="sys-bar-mark" aria-hidden="true"></span></p>
             </div>
-
-            <div class="flex flex-wrap justify-between items-end gap-6">
-                <nav class="flex flex-wrap gap-x-6 gap-y-3">
-                    <a href="#" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">ABOUT 404</a>
-                    <a href="#" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">JOURNAL</a>
-                    <a href="#" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">VISUAL</a>
-                    <a href="#" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">GEAR</a>
-                    <a href="#sns-section" class="font-sans text-sm md:text-base tracking-wider hover:text-accent transition-colors uppercase">SNS</a>
-                </nav>
-                <p class="font-sans text-xs text-textMuted tracking-wider">© 404 LIFE</p>
-            </div>
+            <p class="sys-foot__copy">© 404 LIFE</p>
         </footer>
-
     </div>
 </body>
 </html>
