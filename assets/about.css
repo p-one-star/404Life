@@ -1,0 +1,607 @@
+/* ==========================================================
+   404 LIFE SYSTEM — ABOUT 404（FILE 01）専用パーツ
+   共通の色・背景・レール・BOOT・グリッチ・読み込み演出は system.css。
+   ここには ABOUT ページだけで使う部品を置く（TOP には読み込まない）。
+   ========================================================== */
+
+/* ---------- ファイルパス（ヘッダー下） ---------- */
+
+.sys-file-path {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 0;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  font-family: var(--sys-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #a3a3a3;
+}
+
+.sys-file-path b {
+  font-weight: 400;
+  color: var(--sys-accent);
+}
+
+.sys-file-path__state {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  color: var(--sys-accent);
+  white-space: nowrap;
+}
+
+/* ---------- セクション共通 ---------- */
+
+.sys-about-sec {
+  position: relative;
+  padding-top: 60px;
+}
+
+.sys-about-sec:first-of-type {
+  padding-top: 26px;
+}
+
+.sys-about-title {
+  margin: 0 0 22px;
+  font-family: var(--sys-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 10vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--sys-white);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+}
+
+.sys-about-title .is-accent {
+  color: var(--sys-accent);
+  text-shadow: 0 0 16px rgba(var(--sys-accent-rgb), 0.3);
+}
+
+/* 本文：ファイルの中身として暗い面にのせる */
+.sys-copy {
+  margin: 0;
+  padding: 20px 18px 20px 20px;
+  border-left: 2px solid var(--sys-accent);
+  background: rgba(0, 0, 0, 0.6);
+  font-family: var(--sys-sans);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.95;
+  letter-spacing: 0.06em;
+  color: #f2f2f2;
+}
+
+.sys-copy p {
+  margin: 0;
+}
+
+.sys-copy p + p {
+  margin-top: 1.25em;
+}
+
+.sys-copy__lead {
+  font-weight: 900;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.sys-copy__accent {
+  color: var(--sys-accent);
+  text-shadow: 0 0 10px rgba(var(--sys-accent-rgb), 0.35);
+}
+
+.sys-copy__strong {
+  font-weight: 900;
+  font-size: 1.25em;
+}
+
+/* ---------- SECTION 01：ファイル見出し ---------- */
+
+.sys-file-id {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 18px;
+}
+
+.sys-file-no {
+  display: inline-block;
+  font-family: var(--sys-display);
+  font-size: clamp(4.6rem, 25vw, 7.4rem);
+  line-height: 0.9;
+  color: var(--sys-accent);
+  text-shadow: 0 0 18px rgba(var(--sys-accent-rgb), 0.3);
+}
+
+.sys-file-id__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 16px;
+  border-left: 1px solid rgba(var(--sys-accent-rgb), 0.85);
+}
+
+.sys-file-id__label {
+  font-family: var(--sys-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: #a3a3a3;
+}
+
+.sys-file-title {
+  margin: 0;
+  font-family: var(--sys-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 8.4vw, 2.8rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--sys-white);
+}
+
+.sys-ident {
+  margin: 0 0 22px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.sys-ident__label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--sys-mono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--sys-accent);
+}
+
+.sys-ident__value {
+  display: inline-block;
+  font-family: var(--sys-display);
+  font-size: clamp(1.2rem, 6vw, 1.7rem);
+  letter-spacing: 0.04em;
+  color: var(--sys-white);
+}
+
+/* ---------- 画像枠（プレースホルダー） ----------
+   画像を用意したら .sys-slot__empty を
+   <img class="sys-slot__img" src="assets/…webp" width="…" height="…" alt="…">
+   に置き換える。比率は --slot-ratio。 */
+
+.sys-slot {
+  position: relative;
+  width: min(78%, 290px);
+  margin: 22px 0 0 auto;
+}
+
+.sys-slot__screen {
+  position: relative;
+  aspect-ratio: var(--slot-ratio, 4 / 5);
+  overflow: hidden;
+  border: 1px solid #333;
+  background: #0b0b0b;
+}
+
+/* 角ブラケット */
+.sys-slot__screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  --t: 12px;
+  --fc: var(--sys-accent);
+  background:
+    linear-gradient(var(--fc) 0 0) 0 0 / var(--t) 2px,
+    linear-gradient(var(--fc) 0 0) 0 0 / 2px var(--t),
+    linear-gradient(var(--fc) 0 0) 100% 0 / var(--t) 2px,
+    linear-gradient(var(--fc) 0 0) 100% 0 / 2px var(--t),
+    linear-gradient(var(--fc) 0 0) 0 100% / var(--t) 2px,
+    linear-gradient(var(--fc) 0 0) 0 100% / 2px var(--t),
+    linear-gradient(var(--fc) 0 0) 100% 100% / var(--t) 2px,
+    linear-gradient(var(--fc) 0 0) 100% 100% / 2px var(--t);
+  background-repeat: no-repeat;
+}
+
+/* 走査線 */
+.sys-slot__screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(180deg, transparent 0 2px, rgba(0, 0, 0, 0.22) 2px 3px);
+}
+
+.sys-slot__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sys-slot__empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background:
+    linear-gradient(var(--sys-accent) 0 0) center / 28px 1px no-repeat,
+    linear-gradient(var(--sys-accent) 0 0) center / 1px 28px no-repeat,
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 10px, transparent 10px 20px),
+    radial-gradient(ellipse at center, #1a1a1a 0%, #070707 100%);
+}
+
+.sys-slot__tag {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-family: var(--sys-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--sys-accent);
+}
+
+.sys-slot__msg {
+  margin-top: 60px;
+  font-family: var(--sys-display);
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: #cfcfcf;
+}
+
+.sys-slot__sub {
+  font-family: var(--sys-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: #7a7a7a;
+}
+
+.sys-slot__cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+  font-family: var(--sys-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #9a9a9a;
+}
+
+/* ---------- SECTION 02：領域タグ ---------- */
+
+.sys-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+
+.sys-tags li {
+  padding: 8px 11px 7px;
+  border: 1px solid rgba(var(--sys-accent-rgb), 0.6);
+  background: rgba(0, 0, 0, 0.6);
+  font-family: var(--sys-display);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--sys-white);
+}
+
+.sys-tags li:first-child {
+  border-color: var(--sys-accent);
+  color: var(--sys-accent);
+}
+
+/* ---------- SECTION 03：SYSTEM STATUS ---------- */
+
+.sys-board {
+  position: relative;
+  padding: 14px 16px 12px;
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.7);
+  font-family: var(--sys-mono);
+}
+
+.sys-board::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  --t: 12px;
+  --fc: var(--sys-accent);
+  background:
+    linear-gradient(var(--fc) 0 0) 0 0 / var(--t) 2px,
+    linear-gradient(var(--fc) 0 0) 0 0 / 2px var(--t),
+    linear-gradient(var(--fc) 0 0) 100% 0 / var(--t) 2px,
+    linear-gradient(var(--fc) 0 0) 100% 0 / 2px var(--t),
+    linear-gradient(var(--fc) 0 0) 0 100% / var(--t) 2px,
+    linear-gradient(var(--fc) 0 0) 0 100% / 2px var(--t),
+    linear-gradient(var(--fc) 0 0) 100% 100% / var(--t) 2px,
+    linear-gradient(var(--fc) 0 0) 100% 100% / 2px var(--t);
+  background-repeat: no-repeat;
+}
+
+.sys-board__head,
+.sys-board__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: #a3a3a3;
+}
+
+.sys-board__head {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(var(--sys-accent-rgb), 0.5);
+}
+
+.sys-board__head span:last-child {
+  display: inline-flex;
+  align-items: center;
+  color: var(--sys-accent);
+}
+
+.sys-board__foot {
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.sys-board__foot b {
+  font-weight: 400;
+  color: var(--sys-accent);
+}
+
+.sys-board__list {
+  margin: 0;
+  padding: 4px 0;
+}
+
+.sys-board__row {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  border-bottom: 1px dashed #2c2c2c;
+}
+
+.sys-board__row:last-child {
+  border-bottom: 0;
+}
+
+.sys-board__row dt {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: #e6e6e6;
+}
+
+/* 点線リーダー（行の ::after は読み込み演出が使うので dt 側に置く） */
+.sys-board__row dt::after {
+  content: "";
+  flex: 1;
+  min-width: 14px;
+  margin: 0 10px;
+  border-bottom: 1px dotted #4a4a4a;
+}
+
+.sys-board__row dd {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--sys-accent);
+  white-space: nowrap;
+  text-shadow: 0 0 8px rgba(var(--sys-accent-rgb), 0.35);
+}
+
+.sys-board__row dd .sys-lamp {
+  margin: 0 0 0 8px;
+  order: 2;
+}
+
+.sys-board__up {
+  margin-left: 4px;
+  font-size: 11px;
+}
+
+/* ERROR：反転表示 */
+.sys-board__row dd.is-error {
+  padding: 3px 8px 2px;
+  background: var(--sys-accent);
+  color: #000;
+  text-shadow: none;
+  box-shadow: var(--sys-glow);
+}
+
+.sys-board__row dd.is-error .sys-lamp {
+  background: #000;
+  box-shadow: none;
+}
+
+/* 整備中：白＋進捗バー */
+.sys-board__row dd.is-maint {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  color: var(--sys-white);
+  text-shadow: none;
+}
+
+.sys-board__bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background:
+    linear-gradient(var(--sys-accent) 0 0) 0 0 / 40.4% 100% no-repeat,
+    repeating-linear-gradient(90deg, #333 0 6px, transparent 6px 8px);
+}
+
+.sys-lamp--blink {
+  animation: sys-lamp-blink 1.6s steps(1) infinite;
+}
+
+@keyframes sys-lamp-blink {
+  0%  { opacity: 1; }
+  70% { opacity: 0.15; }
+}
+
+@media (max-width: 359px) {
+  .sys-board { padding-left: 12px; padding-right: 12px; }
+  .sys-board__row dt,
+  .sys-board__row dd { font-size: 13px; }
+  .sys-board__row dt::after { margin: 0 6px; }
+}
+
+/* ---------- SECTION 04：PHILOSOPHY ---------- */
+
+.sys-philo {
+  margin: 0 0 26px;
+  font-family: var(--sys-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 9.4vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: var(--sys-white);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85);
+}
+
+.sys-philo span {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.sys-philo .is-accent {
+  color: var(--sys-accent);
+  text-shadow: 0 0 18px rgba(var(--sys-accent-rgb), 0.3);
+}
+
+.sys-reset {
+  margin: 30px 0 0;
+  font-family: var(--sys-display);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 12vw, 4.4rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  color: var(--sys-accent);
+  text-shadow: 0 0 10px rgba(var(--sys-accent-rgb), 0.45), 0 0 30px rgba(var(--sys-accent-rgb), 0.2);
+}
+
+/* ---------- 最終セクション ---------- */
+
+.sys-final {
+  position: relative;
+  padding-top: 80px;
+}
+
+.sys-final .sys-hero__jp {
+  margin-bottom: 30px;
+}
+
+.sys-return {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 60px;
+  padding: 8px 16px 8px 8px;
+  border: 1px solid var(--sys-accent);
+  background: rgba(0, 0, 0, 0.66);
+  font-family: var(--sys-mono);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--sys-white);
+  touch-action: manipulation;
+  transition: background-color 0.15s, box-shadow 0.15s, color 0.15s;
+}
+
+.sys-return .sys-go {
+  width: 44px;
+  height: 44px;
+}
+
+.sys-return b {
+  font-weight: 400;
+  color: var(--sys-accent);
+}
+
+.sys-return:active,
+.sys-return:focus-visible {
+  background: rgba(var(--sys-accent-rgb), 0.08);
+  box-shadow: 0 0 18px rgba(var(--sys-accent-rgb), 0.3);
+  outline: none;
+}
+
+.sys-return:active .sys-go,
+.sys-return:focus-visible .sys-go {
+  background: var(--sys-accent);
+  color: #000;
+}
+
+.sys-return:active .sys-return__label,
+.sys-return:focus-visible .sys-return__label {
+  animation: sys-btn-glitch 0.24s steps(1) 1;
+}
+
+@media (hover: hover) {
+  .sys-return:hover {
+    background: rgba(var(--sys-accent-rgb), 0.08);
+    box-shadow: 0 0 18px rgba(var(--sys-accent-rgb), 0.3);
+  }
+
+  .sys-return:hover .sys-go {
+    background: var(--sys-accent);
+    color: #000;
+  }
+
+  .sys-return:hover .sys-return__label {
+    animation: sys-btn-glitch 0.24s steps(1) 1;
+  }
+}
+
+.sys-return__label {
+  display: inline-block;
+}
+
+@media (max-width: 359px) {
+  .sys-return { gap: 10px; padding-right: 10px; font-size: 13px; letter-spacing: 0.06em; }
+  .sys-copy { font-size: 16px; padding-left: 16px; padding-right: 14px; }
+}
+
+/* ---------- PC：本文と画像を横並び ---------- */
+
+@media (min-width: 768px) {
+  .sys-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .sys-split .sys-slot {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sys-lamp--blink,
+  .sys-return__label {
+    animation: none !important;
+  }
+}

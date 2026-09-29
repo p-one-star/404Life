@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>ABOUT 404 | 404LIFE</title>
+    <meta name="description" content="JINZOU NINGEN 404の個体情報。仕事して、遊んで、また仕事する。人生整備中。">
+
+    <!-- BOOT判定（TOPと共通）：同一セッションの再表示は短縮、動きを減らす設定では表示しない -->
+    <script>
+        (function (h) {
+            try {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                var seen = null;
+                try { seen = sessionStorage.getItem('404-life-boot'); sessionStorage.setItem('404-life-boot', '1'); } catch (e) {}
+                h.setAttribute('data-boot', seen ? 'short' : 'full');
+            } catch (e) {}
+        })(document.documentElement);
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- 404 LIFE SYSTEM（TOPと共通）＋ ABOUT専用パーツ -->
+    <link rel="preload" as="image" href="assets/garage-bg.webp" type="image/webp">
+    <link rel="stylesheet" href="assets/system.css">
+    <link rel="stylesheet" href="assets/about.css">
+    <script src="assets/system.js" defer></script>
+
+    <!-- Tailwind CSS（TOPと同じ基本スタイルにそろえるため） -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#ccff00', // 蛍光イエロー
+                        bgBase: '#000000', // 真っ黒
+                        lineDark: '#222222', // ダークグレーの罫線
+                        textMuted: '#888888', // くすんだ白
+                    },
+                    fontFamily: {
+                        'blackops': ['"Black Ops One"', 'system-ui'],
+                        'sans': ['"Noto Sans JP"', 'sans-serif'],
+                        'mono': ['"Share Tech Mono"', 'monospace'],
+                    },
+                    letterSpacing: {
+                        'super-wide': '0.2em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* 選択時のハイライト色を変更 */
+        ::selection {
+            background: #ccff00;
+            color: #000000;
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen">
+
+    <a href="#main" class="sys-skip">本文へスキップ</a>
+
+    <!-- 背景：ガレージ（TOPと共通。画像は assets/system.css の --sys-bg-image） -->
+    <div class="sys-bg" aria-hidden="true"><div class="sys-bg__img"></div></div>
+
+    <!-- BOOT演出（TOPと共通） -->
+    <div class="sys-boot" aria-hidden="true">
+        <div class="sys-boot__panel">
+            <p class="sys-boot__head"><span>404 // LIFE SYSTEM</span><span>FILE 01</span></p>
+            <ol class="sys-boot__log">
+                <li style="--d:0">BOOTING...</li>
+                <li style="--d:1">OPENING FILE 01...</li>
+                <li style="--d:2"><span>BODY</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:3"><span>GARAGE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:4"><span>PLAY MODE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+            </ol>
+            <div class="sys-boot__bar"><span></span></div>
+            <p class="sys-boot__logo"><span>404</span> LIFE</p>
+            <p class="sys-boot__jp">人生整備中。</p>
+        </div>
+        <p class="sys-boot__skip">TAP TO SKIP</p>
+        <div class="sys-boot__line"></div>
+    </div>
+
+    <!-- CRT／監視モニター効果（TOPと共通） -->
+    <div class="sys-crt" aria-hidden="true"><span class="sys-crt__roll"></span></div>
+
+    <div id="top" class="sys-page">
+        <div class="sys-rails" aria-hidden="true" data-flicker></div>
+
+        <header class="sys-head">
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+
+            <div class="sys-head__top">
+                <div class="sys-sysmenu">
+                    <p class="m-0" data-glitch="soft">404 LIFE SYSTEM</p>
+                    <ul>
+                        <li>CAR</li>
+                        <li>FASHION</li>
+                        <li>GEAR</li>
+                        <li>PLAY</li>
+                        <li>LIFE</li>
+                    </ul>
+                </div>
+                <p class="sys-id">
+                    <span class="sys-barcode" aria-hidden="true" data-flicker></span>
+                    <span data-glitch="soft">JINZOU NINGEN 404</span>
+                </p>
+            </div>
+
+            <!-- JOURNAL / VISUAL / GEAR はページ未制作のため仮リンク（TOPと同じく押しても移動しない） -->
+            <nav aria-label="メニュー">
+                <ul class="sys-nav">
+                    <li><a href="index.html">TOP</a></li>
+                    <li><a href="about.html" aria-current="page"><span data-glitch="soft">ABOUT 404</span></a></li>
+                    <li><a href="#">JOURNAL</a></li>
+                    <li><a href="#">VISUAL</a></li>
+                    <li><a href="#">GEAR</a></li>
+                    <li><a href="index.html#sns-section">SNS</a></li>
+                </ul>
+            </nav>
+
+            <p class="sys-file-path">
+                <span>PATH : <b>/GARAGE_No.404/FILE_01</b></span>
+                <span class="sys-file-path__state"><i class="sys-lamp" data-flicker></i>FILE OPEN</span>
+            </p>
+        </header>
+
+        <main id="main">
+
+            <!-- SECTION 01：ABOUT 404 -->
+            <section class="sys-about-sec" aria-labelledby="about-title">
+                <div class="sys-sec-head" data-sys-load>
+                    <span>01 // ABOUT 404</span>
+                    <span class="sys-sec-head__state"><i class="sys-lamp"></i>READ ONLY</span>
+                </div>
+
+                <div class="sys-file-id" data-sys-load style="--sys-delay:60ms">
+                    <span class="sys-file-no" data-glitch aria-hidden="true">01</span>
+                    <div class="sys-file-id__body">
+                        <span class="sys-file-id__label">SYSTEM // FILE</span>
+                        <h1 id="about-title" class="sys-file-title" data-glitch>ABOUT 404</h1>
+                    </div>
+                </div>
+
+                <p class="sys-ident" data-sys-load style="--sys-delay:120ms">
+                    <span class="sys-ident__label">IDENTIFICATION :</span>
+                    <span class="sys-ident__value" data-glitch="soft">JINZOU NINGEN 404</span>
+                </p>
+
+                <div class="sys-split">
+                    <div class="sys-copy" data-sys-load style="--sys-delay:180ms">
+                        <p class="sys-copy__lead">404。</p>
+                        <p>仕事して、遊んで、<br>また仕事する。</p>
+                        <p>車も、服も、道具も、<br>遊びも好き。</p>
+                        <p>完成する予定はない。</p>
+                        <p class="sys-copy__accent sys-copy__strong">人生整備中。</p>
+                    </div>
+
+                    <!-- 画像：JINZOU NINGEN 404（準備中）。差し替え方法は assets/about.css の「画像枠」 -->
+                    <figure class="sys-slot" data-sys-load style="--sys-delay:240ms">
+                        <div class="sys-slot__screen" data-flicker>
+                            <div class="sys-slot__empty" role="img" aria-label="JINZOU NINGEN 404の画像（準備中）">
+                                <span class="sys-slot__tag">IMAGE // 404</span>
+                                <span class="sys-slot__msg">NO SIGNAL</span>
+                                <span class="sys-slot__sub">IMAGE STANDBY</span>
+                            </div>
+                        </div>
+                        <figcaption class="sys-slot__cap"><span>CAM 01</span><span>JINZOU NINGEN 404</span></figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- SECTION 02：404 LIFE -->
+            <section class="sys-about-sec" aria-labelledby="life-title">
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+                <div class="sys-sec-head" data-sys-load>
+                    <span>02 // 404 LIFE</span>
+                    <span class="sys-sec-head__state"><i class="sys-lamp"></i>LOADED</span>
+                </div>
+
+                <div data-sys-load style="--sys-delay:60ms">
+                    <h2 id="life-title" class="sys-about-title" data-glitch>404 <span class="is-accent">LIFE</span></h2>
+                    <ul class="sys-tags" aria-label="扱う領域">
+                        <li>CAR</li>
+                        <li>FASHION</li>
+                        <li>GEAR</li>
+                        <li>PLAY</li>
+                        <li>LIFE</li>
+                    </ul>
+                </div>
+
+                <div class="sys-copy" data-sys-load style="--sys-delay:120ms">
+                    <p>欲しいモノを手に入れる。</p>
+                    <p>行きたい場所へ行く。</p>
+                    <p>面白そうなら、<br>とりあえずやる。</p>
+                    <p class="sys-copy__strong">大人になったからって、<br><span class="sys-copy__accent">遊ぶのをやめる<br>理由にはならない。</span></p>
+                </div>
+            </section>
+
+            <!-- SECTION 03：SYSTEM STATUS -->
+            <section class="sys-about-sec" aria-labelledby="status-title">
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+                <div class="sys-sec-head" data-sys-load>
+                    <span>03 // STATUS</span>
+                    <span class="sys-sec-head__state"><i class="sys-lamp" data-flicker></i>SCAN COMPLETE</span>
+                </div>
+
+                <h2 id="status-title" class="sys-about-title" data-sys-load style="--sys-delay:60ms"><span data-glitch>404 <span class="is-accent">//</span> SYSTEM STATUS</span></h2>
+
+                <div class="sys-board" data-sys-load style="--sys-delay:120ms">
+                    <p class="sys-board__head"><span>STATUS MONITOR</span><span><i class="sys-lamp sys-lamp--blink"></i>ONLINE</span></p>
+                    <dl class="sys-board__list">
+                        <div class="sys-board__row" data-sys-load style="--sys-delay:200ms"><dt>WORK</dt><dd>ACTIVE<i class="sys-lamp"></i></dd></div>
+                        <div class="sys-board__row" data-sys-load style="--sys-delay:280ms"><dt>CAR</dt><dd>RUNNING<i class="sys-lamp"></i></dd></div>
+                        <div class="sys-board__row" data-sys-load style="--sys-delay:360ms"><dt>PLAY</dt><dd>PRIORITY<i class="sys-lamp sys-lamp--blink"></i></dd></div>
+                        <div class="sys-board__row" data-sys-load style="--sys-delay:440ms"><dt>GEAR</dt><dd>INCREASING<span class="sys-board__up" aria-hidden="true">▲</span><i class="sys-lamp"></i></dd></div>
+                        <div class="sys-board__row" data-sys-load style="--sys-delay:520ms"><dt>MONEY</dt><dd class="is-error" data-glitch="soft">ERROR<i class="sys-lamp sys-lamp--blink"></i></dd></div>
+                        <div class="sys-board__row" data-sys-load style="--sys-delay:600ms"><dt>LIFE</dt><dd class="is-maint">UNDER MAINTENANCE<span class="sys-board__bar" aria-hidden="true"></span></dd></div>
+                    </dl>
+                    <p class="sys-board__foot"><span>ERROR CODE : <b>404</b></span><span>SYSTEM // 03</span></p>
+                </div>
+            </section>
+
+            <!-- SECTION 04：PHILOSOPHY -->
+            <section class="sys-about-sec" aria-labelledby="philo-title">
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+                <div class="sys-sec-head" data-sys-load>
+                    <span id="philo-title">04 // PHILOSOPHY // 404</span>
+                    <span class="sys-sec-head__state"><i class="sys-lamp"></i>CORE</span>
+                </div>
+
+                <p class="sys-philo" data-sys-load style="--sys-delay:60ms">
+                    <span data-glitch>Same shit.</span>
+                    <span data-glitch>Different day.</span>
+                    <span class="is-accent" data-glitch>Still good.</span>
+                </p>
+
+                <div class="sys-copy" data-sys-load style="--sys-delay:120ms">
+                    <p>毎日そんなに<br>劇的には変わらん。</p>
+                    <p>仕事して、<br>疲れて、<br>寝て、<br>また起きる。</p>
+                    <p>だから、その間に</p>
+                    <p class="sys-copy__accent sys-copy__strong">好きなことをぶち込む。</p>
+                </div>
+
+                <p class="sys-reset" data-sys-load style="--sys-delay:80ms"><span data-glitch>RESET YOUR LIFE.</span></p>
+            </section>
+
+            <!-- SECTION 05：PARTNER // BLACK DOG -->
+            <section class="sys-about-sec" aria-labelledby="dog-title">
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+                <div class="sys-sec-head" data-sys-load>
+                    <span>05 // PARTNER</span>
+                    <span class="sys-sec-head__state"><i class="sys-lamp sys-lamp--blink"></i>NEARBY</span>
+                </div>
+
+                <h2 id="dog-title" class="sys-about-title" data-sys-load style="--sys-delay:60ms"><span data-glitch>PARTNER <span class="is-accent">//</span> BLACK DOG</span></h2>
+
+                <div class="sys-split">
+                    <div class="sys-copy" data-sys-load style="--sys-delay:120ms">
+                        <p>だいたい404の近くにいる<br>黒いやつ。</p>
+                        <p>主役ではない。</p>
+                        <p>でも、気づくと<br><span class="sys-copy__accent">だいたいいる。</span></p>
+                    </div>
+
+                    <!-- 画像：BLACK DOG（準備中）。差し替え方法は assets/about.css の「画像枠」 -->
+                    <figure class="sys-slot" data-sys-load style="--sys-delay:180ms">
+                        <div class="sys-slot__screen" data-flicker>
+                            <div class="sys-slot__empty" role="img" aria-label="黒犬の画像（準備中）">
+                                <span class="sys-slot__tag">IMAGE // BLACK DOG</span>
+                                <span class="sys-slot__msg">NO SIGNAL</span>
+                                <span class="sys-slot__sub">IMAGE STANDBY</span>
+                            </div>
+                        </div>
+                        <figcaption class="sys-slot__cap"><span>CAM 02</span><span>BLACK DOG</span></figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- 最終：404 LIFE. 人生整備中。＋ TOPへ戻る -->
+            <section class="sys-final" aria-labelledby="final-title">
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+                <div data-sys-load>
+                    <h2 id="final-title" class="sys-hero-title" data-glitch>
+                        <span class="is-white">404</span>
+                        <span class="is-accent">LIFE.</span>
+                    </h2>
+                    <p class="sys-hero__jp">人生整備中。</p>
+                </div>
+
+                <div data-sys-load style="--sys-delay:100ms">
+                    <a class="sys-return" href="index.html">
+                        <span class="sys-go" aria-hidden="true" data-flicker><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H6M12 6l-6 6 6 6"/></svg></span>
+                        <span class="sys-return__label">RETURN <b>//</b> GARAGE No.404</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="sys-foot" data-sys-load>
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+            <div class="sys-foot__grid">
+                <div>
+                    <p class="sys-foot__sys">404 // LIFE SYSTEM<br>ACCESS : GRANTED<br>STATUS : ONLINE<span class="sys-foot__block" aria-hidden="true"></span></p>
+                    <span class="sys-bar-mark" aria-hidden="true" data-flicker></span>
+                </div>
+                <a class="sys-foot__top" href="#top" aria-label="ページの先頭へ">
+                    <svg viewBox="0 0 12 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 17V2M1 7l5-5 5 5"/></svg>
+                    <span>SCROLL</span>
+                </a>
+                <p class="sys-foot__right"><span data-glitch="soft">GARAGE No.404</span><span class="sys-bar-mark" aria-hidden="true"></span></p>
+            </div>
+            <p class="sys-foot__copy">© 404 LIFE</p>
+        </footer>
+    </div>
+</body>
+</html>
