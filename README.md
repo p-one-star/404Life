@@ -8,8 +8,10 @@
 | --- | --- |
 | `index.html` | TOP（Tailwind CDN） |
 | `about.html` | 01 // ABOUT 404（個体情報ファイル） |
+| `gear.html` | 02 // GEAR（404の装備リスト） |
 | `assets/system.css` | 404 LIFE SYSTEM のUI・演出（BOOT、CRT、たまに起きる不具合、読み込み演出、背景） |
-| `assets/about.css` | ABOUTページ専用の部品（ステータス表示、画像枠、RETURNボタンなど） |
+| `assets/about.css` | ファイルページ（ABOUT・GEAR）共通の部品（ファイル見出し、本文枠、画像枠、RETURNボタンなど） |
+| `assets/gear.css` / `assets/gear.js` | GEARの持ち物カード／件数・読み込み演出・管理番号の重複チェック |
 | `assets/system.js` | BOOTの終了・スキップ、背景のスクロール連動、不具合演出の間隔、読み込み演出 |
 | `assets/garage-bg.webp` | 背景のガレージ画像（725×2170） |
 | `assets/404-avatar.webp` | プロフィールの丸アイコン（`0C740438-….png` から切り出し） |
@@ -33,7 +35,7 @@
 - 背景：スクロールに合わせて画像の上端（天井）→下端（床）へ移動。
 - たまに起きる不具合：4〜10秒に1回、画面内の1か所（まれに2か所）だけ、文字のズレ／RGBずれ／ラインや照明のちらつき。対象は `data-glitch`（`="soft"` は小さいズレ）と `data-flicker` を付けた要素。
 - 「動きを減らす」設定（prefers-reduced-motion）では、BOOT・不具合・読み込み演出・ノイズ・背景の移動を止める。
-- TOP の構成は 01 ABOUT 404 / 02 GEAR / 03 SNS（上部ナビは TOP / ABOUT 404 / GEAR / SNS）。GEAR は仮リンク（`href="#"`、押しても移動しない）。ページができたら href を差し替える。
+- TOP の構成は 01 ABOUT 404 / 02 GEAR / 03 SNS（上部ナビは TOP / ABOUT 404 / GEAR / SNS）。GEAR は `gear.html` へ。
 
 ## ページの共通部分
 
@@ -42,3 +44,17 @@ TOP と ABOUT は同じ `system.css` / `system.js` を読み込む（背景・BO
 ## ABOUT の画像
 
 `assets/about-404.webp`（404）と `assets/about-black-dog.webp`（黒犬）。どちらも720×900（4:5）。差し替えるときは同じファイル名で上書きするか、`about.html` の `<img class="sys-slot__img" …>` の src を変える。元画像は `source-assets/`（Git管理外）。
+
+## GEAR の持ち物を追加する
+
+`gear.html` の `<ol class="sys-gear-list">` の中に、1つの持ち物につき1行。行をコピーして4か所を書き換える。
+
+```html
+<li><a class="sys-gear" href="楽天アフィリエイトURL" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 003</span><span class="sys-gear__name">俺のカメラ</span></a></li>
+```
+
+- 管理番号は `カテゴリ // 3桁`。カテゴリごとに001から連番。同じ名前が複数あってもよい。
+- URLが未定の間は `href="#"`。自動で STANDBY 表示になり、押しても移動しない。URLを入れると ↗ が付き、カード全体が楽天へ直接つながる（新しいタブ）。
+- `target="_blank" rel="sponsored noopener"` は消さない（広告リンクの印）。
+- 件数表示（ITEMS）は自動。管理番号が重複すると、ブラウザのコンソールに警告が出る。
+- ページ上部のPR表記は、広告リンクがある限り消さない。

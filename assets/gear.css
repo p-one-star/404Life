@@ -1,0 +1,294 @@
+/* ==========================================================
+   404 LIFE SYSTEM — GEAR（FILE 02）専用パーツ
+   共通：system.css ／ ファイルページ共通の部品：about.css
+   ========================================================== */
+
+/* ---------- 導入 ---------- */
+
+.sys-gear-sub {
+  margin: 4px 0 0;
+  font-family: var(--sys-sans);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: #e6e6e6;
+}
+
+/* 在庫バー（件数） */
+.sys-inventory {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.6);
+  font-family: var(--sys-mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: #a3a3a3;
+}
+
+.sys-inventory b {
+  font-weight: 400;
+  color: var(--sys-accent);
+}
+
+.sys-inventory__state {
+  display: inline-flex;
+  align-items: center;
+  color: var(--sys-accent);
+  white-space: nowrap;
+}
+
+/* PR表記（本文の前に置く） */
+.sys-pr {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 22px;
+  font-family: var(--sys-sans);
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #cfcfcf;
+}
+
+.sys-pr b {
+  flex: none;
+  padding: 1px 6px;
+  border: 1px solid var(--sys-accent);
+  font-family: var(--sys-mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--sys-accent);
+}
+
+/* ---------- 持ち物カード ---------- */
+
+.sys-gear-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .sys-gear-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.sys-gear {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  min-height: 62px;
+  padding: 9px 10px 9px 14px;
+  border: 1px solid #2e2e2e;
+  border-left: 2px solid rgba(var(--sys-accent-rgb), 0.85);
+  background: rgba(0, 0, 0, 0.66);
+  color: var(--sys-white);
+  touch-action: manipulation;
+  transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.sys-gear__id {
+  grid-column: 1;
+  font-family: var(--sys-mono);
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.12em;
+  color: var(--sys-accent);
+}
+
+.sys-gear__name {
+  grid-column: 1;
+  overflow: hidden;
+  font-family: var(--sys-sans);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 右端の ↗（外部リンク）。矢印は線画（文字だと端末で絵文字になるため） */
+.sys-gear::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(var(--sys-accent-rgb), 0.85);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ccff00' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 18L18 6M18 6H9M18 6v9'/%3E%3C/svg%3E") center / 20px no-repeat;
+  transition: background-color 0.15s, box-shadow 0.15s;
+}
+
+.sys-gear:active,
+.sys-gear:focus-visible {
+  border-color: rgba(var(--sys-accent-rgb), 0.6);
+  background: rgba(var(--sys-accent-rgb), 0.07);
+  box-shadow: 0 0 16px rgba(var(--sys-accent-rgb), 0.18);
+  outline: none;
+}
+
+.sys-gear:active::after,
+.sys-gear:focus-visible::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 18L18 6M18 6H9M18 6v9'/%3E%3C/svg%3E") center / 20px no-repeat, var(--sys-accent);
+  box-shadow: var(--sys-glow);
+}
+
+.sys-gear:active .sys-gear__name,
+.sys-gear:focus-visible .sys-gear__name {
+  color: var(--sys-accent);
+}
+
+@media (hover: hover) {
+  .sys-gear:hover {
+    border-color: rgba(var(--sys-accent-rgb), 0.6);
+    background: rgba(var(--sys-accent-rgb), 0.07);
+    box-shadow: 0 0 16px rgba(var(--sys-accent-rgb), 0.18);
+  }
+
+  .sys-gear:hover::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 18L18 6M18 6H9M18 6v9'/%3E%3C/svg%3E") center / 20px no-repeat, var(--sys-accent);
+    box-shadow: var(--sys-glow);
+  }
+
+  .sys-gear:hover .sys-gear__name {
+    color: var(--sys-accent);
+  }
+}
+
+/* URL 未設定（href="#"）：押せない STANDBY 表示 */
+.sys-gear[href="#"] {
+  border-left-color: #444;
+  cursor: default;
+}
+
+.sys-gear[href="#"]::after {
+  content: "STANDBY";
+  width: auto;
+  height: auto;
+  padding: 3px 6px;
+  border-color: #3a3a3a;
+  background: none;
+  font-family: var(--sys-mono);
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  color: #7a7a7a;
+}
+
+.sys-gear[href="#"] .sys-gear__id {
+  color: #9a9a9a;
+}
+
+.sys-gear[href="#"]:active,
+.sys-gear[href="#"]:focus-visible {
+  border-color: #2e2e2e;
+  background: rgba(0, 0, 0, 0.66);
+  box-shadow: none;
+}
+
+.sys-gear[href="#"]:active::after,
+.sys-gear[href="#"]:focus-visible::after {
+  background: none;
+  color: #7a7a7a;
+  box-shadow: none;
+}
+
+.sys-gear[href="#"]:active .sys-gear__name,
+.sys-gear[href="#"]:focus-visible .sys-gear__name {
+  color: var(--sys-white);
+}
+
+@media (hover: hover) {
+  .sys-gear[href="#"]:hover {
+    border-color: #2e2e2e;
+    background: rgba(0, 0, 0, 0.66);
+    box-shadow: none;
+  }
+
+  .sys-gear[href="#"]:hover::after {
+    background: none;
+    color: #7a7a7a;
+    box-shadow: none;
+  }
+
+  .sys-gear[href="#"]:hover .sys-gear__name {
+    color: var(--sys-white);
+  }
+}
+
+.sys-gear-note {
+  margin: 14px 0 0;
+  font-family: var(--sys-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #7a7a7a;
+  text-align: right;
+}
+
+/* ---------- トースト（ただいま準備中） ---------- */
+
+.sys-toast {
+  position: fixed;
+  left: 50%;
+  bottom: max(24px, calc(env(safe-area-inset-bottom) + 16px));
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100% - 32px);
+  padding: 12px 18px;
+  border: 1px solid var(--sys-accent);
+  background: rgba(0, 0, 0, 0.92);
+  box-shadow: 0 0 18px rgba(var(--sys-accent-rgb), 0.25);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 10px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+
+.sys-toast[data-show] {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.sys-toast__tag {
+  font-family: var(--sys-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--sys-accent);
+}
+
+.sys-toast__msg {
+  font-family: var(--sys-sans);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--sys-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sys-toast,
+  .sys-toast[data-show] {
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 359px) {
+  .sys-gear { padding-left: 12px; column-gap: 8px; }
+  .sys-gear__name { font-size: 15px; }
+}
