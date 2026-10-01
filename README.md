@@ -1,6 +1,6 @@
 # 404Life
 
-404 LIFE｜人生整備中。 — https://p-one-star.github.io/404Life/
+404 LIFE｜人生整備中。 — https://404-life.com/
 
 ## 構成
 
