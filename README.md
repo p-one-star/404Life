@@ -9,7 +9,8 @@
 | `index.html` | TOP（Tailwind CDN） |
 | `about.html` | 01 // ABOUT 404（個体情報ファイル） |
 | `original.html` | 02 // ORIGINAL（404が作ったモノ＝SUZURIのオリジナルグッズ。並びは固定） |
-| `gear.html` | 03 // GEAR（使ってるモノ＝楽天アフィリエイト。並びはシャッフル） |
+| `gear.html` | 03 // WORK GEAR（404の商売道具＝職人として仕事で使う道具。楽天アフィリエイト。並びはシャッフル） |
+| `play.html` | 04 // PLAY GEAR（404のオモチャ＝仕事と関係ない物。楽天アフィリエイト。並びはシャッフル） |
 | `assets/system.css` | 404 LIFE SYSTEM のUI・演出（BOOT、CRT、たまに起きる不具合、読み込み演出、背景） |
 | `assets/about.css` | ファイルページ（ABOUT・ORIGINAL・GEAR）共通の部品（ファイル見出し、本文枠、画像枠、RETURNボタンなど） |
 | `assets/gear.css` / `assets/gear.js` | ORIGINAL・GEAR共通の持ち物カード／件数・読み込み演出・管理番号の重複チェック・クリック数の記録・シャッフル（`data-shuffle` を付けたリストだけ） |
@@ -36,7 +37,7 @@
 - 背景：スクロールに合わせて画像の上端（天井）→下端（床）へ移動。
 - たまに起きる不具合：4〜10秒に1回、画面内の1か所（まれに2か所）だけ、文字のズレ／RGBずれ／ラインや照明のちらつき。対象は `data-glitch`（`="soft"` は小さいズレ）と `data-flicker` を付けた要素。
 - 「動きを減らす」設定（prefers-reduced-motion）では、BOOT・不具合・読み込み演出・ノイズ・背景の移動を止める。
-- TOP の構成は 01 ABOUT 404 / 02 ORIGINAL / 03 GEAR / 04 SNS（上部ナビは TOP / ABOUT 404 / ORIGINAL / GEAR / SNS、`sys-nav--5`）。ORIGINAL は `original.html`、GEAR は `gear.html` へ。
+- TOP の構成は 01 ABOUT 404 / 02 ORIGINAL / 03 WORK GEAR / 04 PLAY GEAR / 05 SNS（上部ナビは6項目、`sys-nav--6`。スマホは3列×2段、600px以上は1段）。ORIGINAL は `original.html`、WORK GEAR は `gear.html`、PLAY GEAR は `play.html` へ。
 
 ## ページの共通部分
 
@@ -48,7 +49,9 @@ TOP と ABOUT は同じ `system.css` / `system.js` を読み込む（背景・BO
 
 ## GEAR の持ち物を追加する
 
-`gear.html` の `<ol class="sys-gear-list">` の中に、1つの持ち物につき1行。行をコピーして4か所を書き換える。
+仕事で使う道具は `gear.html`（WORK GEAR）、仕事と関係ない物は `play.html`（PLAY GEAR）。両方で使う物は、両方のページに同じ行（同じ管理番号）を入れる。
+
+`gear.html` / `play.html` の `<ol class="sys-gear-list">` の中に、1つの持ち物につき1行。行をコピーして4か所を書き換える。
 
 ```html
 <li><a class="sys-gear" href="楽天アフィリエイトURL" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 003</span><span class="sys-gear__name">俺のカメラ</span></a></li>

@@ -338,8 +338,8 @@
   }
 }
 
-/* ORIGINAL は文字数が多いので、見出しを少し小さく */
-#original-title { font-size: clamp(1.5rem, 7.4vw, 2.8rem); }
+/* 長い見出し（ORIGINAL / WORK GEAR / PLAY GEAR）は少し小さく */
+.sys-file-title--long { font-size: clamp(1.5rem, 7.4vw, 2.8rem); }
 
 @media (max-width: 359px) {
   .sys-gear { padding-left: 12px; column-gap: 8px; }

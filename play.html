@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>PLAY GEAR | 404LIFE</title>
+    <meta name="description" content="人造人間404のオモチャ。遊びと暮らしで使っているモノ。">
+
+    <!-- BOOT判定（TOPと共通）：同一セッションの再表示は短縮、動きを減らす設定では表示しない -->
+    <script>
+        (function (h) {
+            try {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                var seen = null;
+                try { seen = sessionStorage.getItem('404-life-boot'); sessionStorage.setItem('404-life-boot', '1'); } catch (e) {}
+                h.setAttribute('data-boot', seen ? 'short' : 'full');
+            } catch (e) {}
+        })(document.documentElement);
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- 404 LIFE SYSTEM（TOPと共通）＋ ファイルページ共通（about.css）＋ GEAR専用パーツ -->
+    <link rel="preload" as="image" href="assets/garage-bg.webp" type="image/webp">
+    <link rel="stylesheet" href="assets/system.css">
+    <link rel="stylesheet" href="assets/about.css">
+    <link rel="stylesheet" href="assets/gear.css">
+    <script src="assets/gear.js" defer></script>
+    <script src="assets/system.js" defer></script>
+
+    <!-- Tailwind CSS（TOPと同じ基本スタイルにそろえるため） -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#ccff00', // 蛍光イエロー
+                        bgBase: '#000000', // 真っ黒
+                        lineDark: '#222222', // ダークグレーの罫線
+                        textMuted: '#888888', // くすんだ白
+                    },
+                    fontFamily: {
+                        'blackops': ['"Black Ops One"', 'system-ui'],
+                        'sans': ['"Noto Sans JP"', 'sans-serif'],
+                        'mono': ['"Share Tech Mono"', 'monospace'],
+                    },
+                    letterSpacing: {
+                        'super-wide': '0.2em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* 選択時のハイライト色を変更 */
+        ::selection {
+            background: #ccff00;
+            color: #000000;
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen">
+
+    <a href="#main" class="sys-skip">本文へスキップ</a>
+
+    <!-- 背景：ガレージ（TOPと共通。画像は assets/system.css の --sys-bg-image） -->
+    <div class="sys-bg" aria-hidden="true"><div class="sys-bg__img"></div></div>
+
+    <!-- BOOT演出（TOPと共通） -->
+    <div class="sys-boot" aria-hidden="true">
+        <div class="sys-boot__panel">
+            <p class="sys-boot__head"><span>404 // LIFE SYSTEM</span><span>FILE 04</span></p>
+            <ol class="sys-boot__log">
+                <li style="--d:0">BOOTING...</li>
+                <li style="--d:1">OPENING FILE 04...</li>
+                <li style="--d:2"><span>BODY</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:3"><span>GARAGE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:4"><span>PLAY MODE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+            </ol>
+            <div class="sys-boot__bar"><span></span></div>
+            <p class="sys-boot__logo"><span>404</span> LIFE</p>
+            <p class="sys-boot__jp">人生整備中。</p>
+        </div>
+        <p class="sys-boot__skip">TAP TO SKIP</p>
+        <div class="sys-boot__line"></div>
+    </div>
+
+    <!-- CRT／監視モニター効果（TOPと共通） -->
+    <div class="sys-crt" aria-hidden="true"><span class="sys-crt__roll"></span></div>
+
+    <div id="top" class="sys-page">
+        <div class="sys-rails" aria-hidden="true" data-flicker></div>
+
+        <header class="sys-head">
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+
+            <div class="sys-head__top">
+                <div class="sys-sysmenu">
+                    <p class="m-0" data-glitch="soft">404 LIFE SYSTEM</p>
+                    <ul>
+                        <li>CAR</li>
+                        <li>FASHION</li>
+                        <li>GEAR</li>
+                        <li>PLAY</li>
+                        <li>LIFE</li>
+                    </ul>
+                </div>
+                <p class="sys-id">
+                    <span class="sys-barcode" aria-hidden="true" data-flicker></span>
+                    <span data-glitch="soft">JINZOU NINGEN 404</span>
+                </p>
+            </div>
+
+            <!-- 上部ナビ（TOP / ABOUT / ORIGINAL / WORK GEAR / PLAY GEAR / SNS）：スマホは3列×2段、PCは1段 -->
+            <nav aria-label="メニュー">
+                <ul class="sys-nav sys-nav--6">
+                    <li><a href="index.html">TOP</a></li>
+                    <li><a href="about.html">ABOUT 404</a></li>
+                    <li><a href="original.html">ORIGINAL</a></li>
+                    <li><a href="gear.html">WORK GEAR</a></li>
+                    <li><a href="play.html" aria-current="page"><span data-glitch="soft">PLAY GEAR</span></a></li>
+                    <li><a href="index.html#sns-section">SNS</a></li>
+                </ul>
+            </nav>
+
+            <p class="sys-file-path">
+                <span>PATH : <b>/GARAGE_No.404/FILE_04</b></span>
+                <span class="sys-file-path__state"><i class="sys-lamp" data-flicker></i>FILE OPEN</span>
+            </p>
+        </header>
+
+        <main id="main">
+
+            <!-- 導入：04 // PLAY GEAR -->
+            <section class="sys-about-sec" aria-labelledby="play-title">
+                <div class="sys-sec-head" data-sys-load>
+                    <span>04 // PLAY GEAR</span>
+                    <span class="sys-sec-head__state"><i class="sys-lamp"></i>INVENTORY</span>
+                </div>
+
+                <div class="sys-file-id" data-sys-load style="--sys-delay:60ms">
+                    <span class="sys-file-no" data-glitch aria-hidden="true">04</span>
+                    <div class="sys-file-id__body">
+                        <span class="sys-file-id__label">SYSTEM // FILE</span>
+                        <h1 id="play-title" class="sys-file-title sys-file-title--long" data-glitch>PLAY GEAR</h1>
+                        <p class="sys-gear-sub">404のオモチャ</p>
+                    </div>
+                </div>
+
+                <div data-sys-load style="--sys-delay:120ms">
+                    <p class="sys-inventory">
+                        <span>TOYBOX // 404</span>
+                        <span class="sys-inventory__state"><i class="sys-lamp" data-flicker></i>ITEMS : <b data-gear-count>---</b></span>
+                    </p>
+                    <!-- PR表記：リンク先は楽天アフィリエイト（広告）。本文の前に置く -->
+                    <p class="sys-pr"><b>PR</b><span><span class="sys-pr__seg">このページのリンクには、広告</span><br class="sys-br-sp"><span class="sys-pr__seg">（楽天アフィリエイト）が含まれます。</span></span></p>
+                </div>
+
+                <!--
+                  ===== 持ち物リスト =====
+                  1つの持ち物 = 下の <li> 1行。追加するときは1行コピーして4か所を書き換える。
+                    ・カテゴリ // 番号 … カテゴリごとに 001 から連番（例：CAMERA // 003）
+                    ・表示名 …………… 404視点の名前（例：俺のカメラ）
+                    ・href ……………… 楽天アフィリエイトのURL。未設定の間は "#"（自動で STANDBY 表示。押すと「ただいま準備中」と表示）
+                  rel は "sponsored noopener"（広告の印）。404 LIFEのオリジナルグッズ（SUZURI）は original.html、仕事の道具は gear.html。
+                  ここは仕事と関係ない物（アウトドア・カメラ・車・身の回り・犬など）。仕事でも遊びでも使う物（例：WASHER // 001）は gear.html にも同じ行を入れる。
+                  並びは、ページを開くたびにランダムに入れ替わる（data-shuffle）。
+                -->
+                <ol class="sys-gear-list" data-shuffle>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581052ee.ce1eda17.581052ef.9484ce45/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhomeshop%2F3199-nik-0024%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 001</span><span class="sys-gear__name">俺のカメラ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5812d59d.6bd0ddfd.5812d59e.dffbed81/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fshasinyasan%2F4960759133182%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 002</span><span class="sys-gear__name">俺のカメラストラップ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5812d59d.6bd0ddfd.5812d59e.dffbed81/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fshasinyasan%2F4571284728028%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 003</span><span class="sys-gear__name">俺のカメラケース</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581391fe.11e34280.581391ff.8253be8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkentfaith%2Fkf13-163-jp%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 004</span><span class="sys-gear__name">俺のカメラバッグ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5813a966.20d7c9af.5813a967.9e6039fa/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkicksparrow%2Fu4078418%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">SHOES // 001</span><span class="sys-gear__name">俺のスニーカー</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58160c01.e6ac9747.58160c02.8823bc5f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-t-link%2Fkgo016%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">PANTS // 001</span><span class="sys-gear__name">俺のカーゴパンツ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58163fb8.f1f9beb0.58163fbf.85563737/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbiccamera%2F0753759322540%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">WATCH // 001</span><span class="sys-gear__name">俺の時計</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581657dc.6d4bfd0c.581657dd.ddce0832/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsunglasshouse%2Fokly00-01394%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">GLASSES // 001</span><span class="sys-gear__name">俺のサングラス</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5816630b.4272aae5.5816630c.c04401cd/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fside7%2F10001203%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">WALLET // 001</span><span class="sys-gear__name">俺の財布</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58169576.0afcda9b.58169577.8e6b9980/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsilverkyasya%2Fps053%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CHAIN // 001</span><span class="sys-gear__name">俺のネックレス</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5813d518.e2bce7f2.5813d519.ea389016/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-luft%2F10000082%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAR // 001</span><span class="sys-gear__name">俺の車グッズ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5813ed97.cc9dec22.5813ed98.cb80b9a3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkarcher%2F1600-0500%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">WASHER // 001</span><span class="sys-gear__name">俺の高圧洗浄機</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/52c696fe.d90e341e.52c696ff.ff8a1dfd/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fwillgo%2Fhe-tol11aero102%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">BLOWER // 001</span><span class="sys-gear__name">俺のブロワー</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58158649.10e2274a.5815864a.0e6f00df/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fcalwingparts%2F122650%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">BUCKET // 001</span><span class="sys-gear__name">俺の洗車バケツ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58158af0.a52ebe31.58158af1.ea73a572/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhotroad%2F7210521700%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">SHADE // 001</span><span class="sys-gear__name">俺のサンシェード</span></a></li>
+                    <li><a class="sys-gear" href="#" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">PLAY // 001</span><span class="sys-gear__name">俺の遊び道具</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58169fbd.62bfa8dd.58169fbe.a9b8e1b2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnaturum%2F3498273%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">ROD // 001</span><span class="sys-gear__name">俺のロッド</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5816a86c.3a665aa3.5816a86d.5ed49d50/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnaturum-fishing%2F3380493%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">REEL // 001</span><span class="sys-gear__name">俺のリール</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5816b8ad.b3702857.5816b8ae.91ee4d32/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fanglers1%2F4513498057679%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">LINE // 001</span><span class="sys-gear__name">俺の釣り糸</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5816d250.d9fddf67.5816d251.7175c566/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgancraft%2Fjointedclaw303%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">LURE // 001</span><span class="sys-gear__name">俺のルアー</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58169fbd.62bfa8dd.58169fbe.a9b8e1b2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnaturum%2F9904324%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">TACKLE // 001</span><span class="sys-gear__name">俺のタックルボックス</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58174493.372ddff2.58174494.e20103dc/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fglv%2Fyet-90%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">COOLER // 001</span><span class="sys-gear__name">俺のクーラーボックス</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5817695c.dbc30786.5817695d.1dbfd236/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fliberty-base%2Fhighbackroverchair%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CHAIR // 001</span><span class="sys-gear__name">俺のアウトドアチェア</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581778e4.8c0224b0.581778e5.93114fcd/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmarueidanboru%2Frws0143%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">TABLE // 001</span><span class="sys-gear__name">俺のアウトドアテーブル</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58179672.8578ce23.58179673.90c5151a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fz-mall%2F7764-0002%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">LANTERN // 001</span><span class="sys-gear__name">俺のランタン</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5817b20c.34ce331b.5817b20d.3ace223b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fyiprefer%2Foutdoor-221-soto301%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">PANEL // 001</span><span class="sys-gear__name">俺の天板</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58169fbd.62bfa8dd.58169fbe.a9b8e1b2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnaturum%2F9958746%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">BURNER // 001</span><span class="sys-gear__name">俺のバーナー</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5817da6e.84eb6379.5817da6f.fd08e1d6/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fcole%2Fbbq-stove05-igt%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">GRILL // 001</span><span class="sys-gear__name">俺のBBQグリル</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581b0f82.bc7790dd.581b0f83.1bc5284a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940wkd%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">PC // 001</span><span class="sys-gear__name">俺のノートPC</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581b18d1.b7580561.581b18d2.fe6cffdb/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Flogicool%2Fg703h%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">MOUSE // 001</span><span class="sys-gear__name">俺のマウス</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581b216c.d1988c18.581b216d.875778d3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftact-up%2F101156%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">KEYBOARD // 001</span><span class="sys-gear__name">俺のキーボード</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581b3383.3b5ee663.581b3384.c56bbad3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Famericana%2F2491020%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">BOTTLE // 001</span><span class="sys-gear__name">俺の水筒</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581b5898.1a233b41.581b5899.b66f3302/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fls-shop%2Fh240926031504%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">TENT // 001</span><span class="sys-gear__name">俺のテント</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581b6642.d9630870.581b6643.b8360dde/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fcrystal-planet%2Fmoz2701%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">HAMMOCK // 001</span><span class="sys-gear__name">俺のハンモック</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5817b20c.34ce331b.5817b20d.3ace223b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fyiprefer%2Foutdoor-1630102%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">TARP // 001</span><span class="sys-gear__name">俺のタープ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581b73a6.7b46d1cf.581b73a8.9efa5707/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmaxim-darts%2F25901043%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">DARTS // 001</span><span class="sys-gear__name">俺のダーツ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581b92f3.bf4c5506.581b92f4.83e3be79/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fiwiss%2Fbs-coffee-set%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">COFFEE // 001</span><span class="sys-gear__name">俺のコーヒーギア</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581ba360.ccd39e8d.581ba361.9108c9ec/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ff452025-miyakonojo%2Fla-3302%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">COFFEE // 002</span><span class="sys-gear__name">俺のコーヒー</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581bc2e9.67e7d632.581bc2ea.46ebe1bb/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Falita%2Flily30%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CLOCK // 001</span><span class="sys-gear__name">俺の時計</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581bcd01.e3354395.581bcd03.8cc5112c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnewbag%2Fn02slingbodybag%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">BAG // 002</span><span class="sys-gear__name">俺の普段バッグ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581bdfae.1a6f050f.581bdfaf.47f50d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnakatani-umbrella%2F963-001%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">UMBRELLA // 001</span><span class="sys-gear__name">俺の傘</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581bebab.95c08560.581bebac.4d59d7a7/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftuborabo%2Ftuborabo2025122103150207918376%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">ROPE // 001</span><span class="sys-gear__name">俺の犬のロープ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581bf557.7de5cd24.581bf558.f491c988/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-roadster%2F10006559%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">COLLAR // 001</span><span class="sys-gear__name">俺の犬の首輪</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581bfd1f.c92d3faf.581bfd20.726435bc/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpetifam%2F6953182748168%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">TOY // 001</span><span class="sys-gear__name">俺の犬のおもちゃ</span></a></li>
+                    <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581c0242.b095c5f9.581c0247.7c1c6209/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fyogibo%2Fdgb-l%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">BED // 001</span><span class="sys-gear__name">俺の犬のヨギボー</span></a></li>
+                </ol>
+
+                <p class="sys-gear-note" aria-hidden="true">END OF LIST // 04</p>
+            </section>
+
+            <!-- 最終：TOPへ戻る -->
+            <section class="sys-final" aria-label="トップへ戻る">
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+                <div data-sys-load>
+                    <a class="sys-return" href="index.html">
+                        <span class="sys-go" aria-hidden="true" data-flicker><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H6M12 6l-6 6 6 6"/></svg></span>
+                        <span class="sys-return__label">RETURN <b>//</b> GARAGE No.404</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="sys-foot" data-sys-load>
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+            <div class="sys-foot__grid">
+                <div>
+                    <p class="sys-foot__sys">404 // LIFE SYSTEM<br>ACCESS : GRANTED<br>STATUS : ONLINE<span class="sys-foot__block" aria-hidden="true"></span></p>
+                    <span class="sys-bar-mark" aria-hidden="true" data-flicker></span>
+                </div>
+                <a class="sys-foot__top" href="#top" aria-label="ページの先頭へ">
+                    <svg viewBox="0 0 12 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 17V2M1 7l5-5 5 5"/></svg>
+                    <span>SCROLL</span>
+                </a>
+                <p class="sys-foot__right"><span data-glitch="soft">GARAGE No.404</span><span class="sys-bar-mark" aria-hidden="true"></span></p>
+            </div>
+            <p class="sys-foot__copy">© 404 LIFE</p>
+        </footer>
+    </div>
+</body>
+</html>
