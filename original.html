@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>ORIGINAL | 404LIFE</title>
+    <meta name="description" content="人造人間404のオリジナルグッズ。404が作ったモノ。">
+
+    <!-- BOOT判定（TOPと共通）：同一セッションの再表示は短縮、動きを減らす設定では表示しない -->
+    <script>
+        (function (h) {
+            try {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                var seen = null;
+                try { seen = sessionStorage.getItem('404-life-boot'); sessionStorage.setItem('404-life-boot', '1'); } catch (e) {}
+                h.setAttribute('data-boot', seen ? 'short' : 'full');
+            } catch (e) {}
+        })(document.documentElement);
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- 404 LIFE SYSTEM（TOPと共通）＋ ファイルページ共通（about.css）＋ 持ち物カード（gear.css。ORIGINALとGEARで共通） -->
+    <link rel="preload" as="image" href="assets/garage-bg.webp" type="image/webp">
+    <link rel="stylesheet" href="assets/system.css">
+    <link rel="stylesheet" href="assets/about.css">
+    <link rel="stylesheet" href="assets/gear.css">
+    <script src="assets/gear.js" defer></script>
+    <script src="assets/system.js" defer></script>
+
+    <!-- Tailwind CSS（TOPと同じ基本スタイルにそろえるため） -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#ccff00', // 蛍光イエロー
+                        bgBase: '#000000', // 真っ黒
+                        lineDark: '#222222', // ダークグレーの罫線
+                        textMuted: '#888888', // くすんだ白
+                    },
+                    fontFamily: {
+                        'blackops': ['"Black Ops One"', 'system-ui'],
+                        'sans': ['"Noto Sans JP"', 'sans-serif'],
+                        'mono': ['"Share Tech Mono"', 'monospace'],
+                    },
+                    letterSpacing: {
+                        'super-wide': '0.2em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* 選択時のハイライト色を変更 */
+        ::selection {
+            background: #ccff00;
+            color: #000000;
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen">
+
+    <a href="#main" class="sys-skip">本文へスキップ</a>
+
+    <!-- 背景：ガレージ（TOPと共通。画像は assets/system.css の --sys-bg-image） -->
+    <div class="sys-bg" aria-hidden="true"><div class="sys-bg__img"></div></div>
+
+    <!-- BOOT演出（TOPと共通） -->
+    <div class="sys-boot" aria-hidden="true">
+        <div class="sys-boot__panel">
+            <p class="sys-boot__head"><span>404 // LIFE SYSTEM</span><span>FILE 02</span></p>
+            <ol class="sys-boot__log">
+                <li style="--d:0">BOOTING...</li>
+                <li style="--d:1">OPENING FILE 02...</li>
+                <li style="--d:2"><span>BODY</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:3"><span>GARAGE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:4"><span>PLAY MODE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+            </ol>
+            <div class="sys-boot__bar"><span></span></div>
+            <p class="sys-boot__logo"><span>404</span> LIFE</p>
+            <p class="sys-boot__jp">人生整備中。</p>
+        </div>
+        <p class="sys-boot__skip">TAP TO SKIP</p>
+        <div class="sys-boot__line"></div>
+    </div>
+
+    <!-- CRT／監視モニター効果（TOPと共通） -->
+    <div class="sys-crt" aria-hidden="true"><span class="sys-crt__roll"></span></div>
+
+    <div id="top" class="sys-page">
+        <div class="sys-rails" aria-hidden="true" data-flicker></div>
+
+        <header class="sys-head">
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+
+            <div class="sys-head__top">
+                <div class="sys-sysmenu">
+                    <p class="m-0" data-glitch="soft">404 LIFE SYSTEM</p>
+                    <ul>
+                        <li>CAR</li>
+                        <li>FASHION</li>
+                        <li>GEAR</li>
+                        <li>PLAY</li>
+                        <li>LIFE</li>
+                    </ul>
+                </div>
+                <p class="sys-id">
+                    <span class="sys-barcode" aria-hidden="true" data-flicker></span>
+                    <span data-glitch="soft">JINZOU NINGEN 404</span>
+                </p>
+            </div>
+
+            <!-- 上部ナビ（TOP / ABOUT / ORIGINAL / GEAR / SNS） -->
+            <nav aria-label="メニュー">
+                <ul class="sys-nav sys-nav--5">
+                    <li><a href="index.html">TOP</a></li>
+                    <li><a href="about.html">ABOUT 404</a></li>
+                    <li><a href="original.html" aria-current="page"><span data-glitch="soft">ORIGINAL</span></a></li>
+                    <li><a href="gear.html">GEAR</a></li>
+                    <li><a href="index.html#sns-section">SNS</a></li>
+                </ul>
+            </nav>
+
+            <p class="sys-file-path">
+                <span>PATH : <b>/GARAGE_No.404/FILE_02</b></span>
+                <span class="sys-file-path__state"><i class="sys-lamp" data-flicker></i>FILE OPEN</span>
+            </p>
+        </header>
+
+        <main id="main">
+
+            <!-- 導入：02 // ORIGINAL -->
+            <section class="sys-about-sec" aria-labelledby="original-title">
+                <div class="sys-sec-head" data-sys-load>
+                    <span>02 // ORIGINAL</span>
+                    <span class="sys-sec-head__state"><i class="sys-lamp"></i>INVENTORY</span>
+                </div>
+
+                <div class="sys-file-id" data-sys-load style="--sys-delay:60ms">
+                    <span class="sys-file-no" data-glitch aria-hidden="true">02</span>
+                    <div class="sys-file-id__body">
+                        <span class="sys-file-id__label">SYSTEM // FILE</span>
+                        <h1 id="original-title" class="sys-file-title" data-glitch>ORIGINAL</h1>
+                        <p class="sys-gear-sub">404が作ったモノ</p>
+                    </div>
+                </div>
+
+                <div data-sys-load style="--sys-delay:120ms">
+                    <p class="sys-inventory">
+                        <span>MADE BY 404</span>
+                        <span class="sys-inventory__state"><i class="sys-lamp" data-flicker></i>ITEMS : <b data-gear-count>---</b></span>
+                    </p>
+                    <!-- 販売先の表記：リンク先は404 LIFEのSUZURIショップ（自社グッズ。広告ではない） -->
+                    <p class="sys-pr"><b>SHOP</b><span>404 LIFEのオリジナルグッズです。リンク先はSUZURIの404LIFEショップ。</span></p>
+                </div>
+
+                <!--
+                  ===== オリジナルグッズ（SUZURI） =====
+                  並びは固定（シャッフルしない）。PCでは2列で、左→右、上→下の順に並ぶ。
+                  1つの商品 = 下の <li> 1行。管理番号（カテゴリ // 番号）はクリック数の記録に使うので変えない。
+                  rel は "noopener"（自社グッズなので sponsored は付けない）。
+                  ・空き地：<li class="sys-slot-row"> はリンクのない枠（次の作品用）。件数・クリック数には入らない。
+                    新しい作品が出たら、空き地の行を商品の行に置き換える（例：T-SHIRT // 004）。
+                -->
+                <ol class="sys-gear-list sys-gear-list--original">
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/t-shirt/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">T-SHIRT // 001</span><span class="sys-gear__name">俺のＴシャツ</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/t-shirt/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">T-SHIRT // 002</span><span class="sys-gear__name">俺のＴシャツ</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/t-shirt/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">T-SHIRT // 003</span><span class="sys-gear__name">俺のＴシャツ</span></a></li>
+                    <li class="sys-slot-row"><div class="sys-gear-slot"><span class="sys-gear__id">T-SHIRT // 004</span><span class="sys-gear__name">次の作品、整備中。</span></div></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">HOODIE // 001</span><span class="sys-gear__name">俺のパーカー</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">HOODIE // 002</span><span class="sys-gear__name">俺のパーカー</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">HOODIE // 003</span><span class="sys-gear__name">俺のパーカー</span></a></li>
+                    <li class="sys-slot-row"><div class="sys-gear-slot"><span class="sys-gear__id">HOODIE // 004</span><span class="sys-gear__name">次の作品、整備中。</span></div></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/zip-hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">ZIP HOODIE // 001</span><span class="sys-gear__name">俺のパーカー</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/zip-hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">ZIP HOODIE // 002</span><span class="sys-gear__name">俺のパーカー</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/zip-hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">ZIP HOODIE // 003</span><span class="sys-gear__name">俺のパーカー</span></a></li>
+                    <li class="sys-slot-row"><div class="sys-gear-slot"><span class="sys-gear__id">ZIP HOODIE // 004</span><span class="sys-gear__name">次の作品、整備中。</span></div></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/heavyweight-sweat/l/offwhite?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">SWEAT // 001</span><span class="sys-gear__name">俺のスウェット</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/united-athle-cotton-twill-low-cap-for-shop/f/stoneblue?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">CAP // 001</span><span class="sys-gear__name">俺のキャップ</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/bucket-hat/l/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">HAT // 001</span><span class="sys-gear__name">俺のハット</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/acrylic-keychain/50x50mm/clear?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">KEYCHAIN // 001</span><span class="sys-gear__name">俺のキーホルダー</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/mug/m/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">GOODS // 002</span><span class="sys-gear__name">俺のマグカップ</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/mug/m/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">GOODS // 003</span><span class="sys-gear__name">俺のマグカップ</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/thermo-tumbler/360ml/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">GOODS // 001</span><span class="sys-gear__name">俺のタンブラー</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/thermo-tumbler/360ml/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">GOODS // 004</span><span class="sys-gear__name">俺のタンブラー</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/lunch-tote-bag/s/natural?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">BAG // 003</span><span class="sys-gear__name">俺のトートバッグ</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/reusable-bag/m/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">BAG // 004</span><span class="sys-gear__name">俺のエコバッグ</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/face-towel/free/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">TOWEL // 001</span><span class="sys-gear__name">俺のタオル</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/blanket/m/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">BLANKET // 001</span><span class="sys-gear__name">俺のブランケット</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/washed-canvas-cross-apron-for-shop/free/camel?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">APRON // 001</span><span class="sys-gear__name">俺のエプロン</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/d-factory-tasukigake-apron-for-shop/f/chocolate?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">APRON // 002</span><span class="sys-gear__name">俺のエプロン</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/cushion/free/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">CUSHION // 001</span><span class="sys-gear__name">俺のクッション</span></a></li>
+                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/united-athle-10-0oz-sweat-bib-ura-pile-for-shop/free/ash?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">BIB // 001</span><span class="sys-gear__name">俺のスタイ</span></a></li>
+                </ol>
+
+                <p class="sys-gear-note" aria-hidden="true">END OF LIST // 02</p>
+            </section>
+
+            <!-- 最終：TOPへ戻る -->
+            <section class="sys-final" aria-label="トップへ戻る">
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+                <div data-sys-load>
+                    <a class="sys-return" href="index.html">
+                        <span class="sys-go" aria-hidden="true" data-flicker><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H6M12 6l-6 6 6 6"/></svg></span>
+                        <span class="sys-return__label">RETURN <b>//</b> GARAGE No.404</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="sys-foot" data-sys-load>
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+            <div class="sys-foot__grid">
+                <div>
+                    <p class="sys-foot__sys">404 // LIFE SYSTEM<br>ACCESS : GRANTED<br>STATUS : ONLINE<span class="sys-foot__block" aria-hidden="true"></span></p>
+                    <span class="sys-bar-mark" aria-hidden="true" data-flicker></span>
+                </div>
+                <a class="sys-foot__top" href="#top" aria-label="ページの先頭へ">
+                    <svg viewBox="0 0 12 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 17V2M1 7l5-5 5 5"/></svg>
+                    <span>SCROLL</span>
+                </a>
+                <p class="sys-foot__right"><span data-glitch="soft">GARAGE No.404</span><span class="sys-bar-mark" aria-hidden="true"></span></p>
+            </div>
+            <p class="sys-foot__copy">© 404 LIFE</p>
+        </footer>
+    </div>
+</body>
+</html>

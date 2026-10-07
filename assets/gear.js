@@ -1,11 +1,12 @@
-/* 404 LIFE SYSTEM — GEAR：持ち物リストの補助
+/* 404 LIFE SYSTEM — GEAR / ORIGINAL：持ち物リストの補助
    system.js より先に読み込む（読み込み演出の対象をここで付ける）。
    カードの追加は gear.html に1行足すだけでよい。このファイルは編集不要。 */
 (() => {
   const list = document.querySelector('.sys-gear-list');
 
-  // 並び順をランダムに入れ替える（ページを開くたびに変わる。JSなしでは書いた順のまま）
-  if (list) {
+  // 並び順をランダムに入れ替える（data-shuffle を付けたリストだけ＝GEAR。ORIGINALは固定）
+  // ページを開くたびに変わる。JSなしでは書いた順のまま
+  if (list && list.hasAttribute('data-shuffle')) {
     const rows = [...list.children];
     for (let i = rows.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -18,6 +19,9 @@
 
   const items = document.querySelectorAll('.sys-gear-list > li');
 
+  // 件数・重複チェックは商品だけ（空き地 .sys-slot-row は除く）
+  const goods = [...items].filter((li) => !li.classList.contains('sys-slot-row'));
+
   items.forEach((li, i) => {
     // 読み込み演出：画面に入ったカードから順に（6枚ごとに遅れをリセット）
     li.setAttribute('data-sys-load', '');
@@ -29,11 +33,11 @@
 
   // 件数（3桁）
   const count = document.querySelector('[data-gear-count]');
-  if (count) count.textContent = String(items.length).padStart(3, '0');
+  if (count) count.textContent = String(goods.length).padStart(3, '0');
 
   // 管理番号の重複チェック（ブラウザのコンソールに警告）
   const seen = new Set();
-  items.forEach((li) => {
+  goods.forEach((li) => {
     const id = li.querySelector('.sys-gear__id');
     const key = id ? id.textContent.replace(/\s+/g, ' ').trim() : '';
     if (!key) console.warn('[GEAR] 管理番号がないカードがあります', li);

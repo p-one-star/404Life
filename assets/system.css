@@ -641,6 +641,32 @@ html[data-boot="short"] .sys-boot__line {
   background: rgba(255, 255, 255, 0.55);
 }
 
+/* 5項目のナビ（TOP / ABOUT 404 / ORIGINAL / GEAR / SNS）：スマホでも1段で右寄せ。入らない幅では折り返す */
+.sys-nav.sys-nav--5 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.sys-nav.sys-nav--5 li + li::before {
+  content: "";
+  position: static;
+  width: 1px;
+  height: 14px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 599px) {
+  .sys-nav.sys-nav--5 a { padding: 0 7px; font-size: 12.5px; letter-spacing: 0; }
+  .sys-nav.sys-nav--5 a[aria-current] { padding: 0 10px; }
+}
+
+@media (max-width: 359px) {
+  .sys-nav.sys-nav--5 a { padding: 0 5px; font-size: 11px; }
+  .sys-nav.sys-nav--5 a[aria-current] { padding: 0 8px; }
+}
+
 /* ---------- プロフィール ---------- */
 
 .sys-profile {

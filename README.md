@@ -8,10 +8,11 @@
 | --- | --- |
 | `index.html` | TOP（Tailwind CDN） |
 | `about.html` | 01 // ABOUT 404（個体情報ファイル） |
-| `gear.html` | 02 // GEAR（404の装備リスト） |
+| `original.html` | 02 // ORIGINAL（404が作ったモノ＝SUZURIのオリジナルグッズ。並びは固定） |
+| `gear.html` | 03 // GEAR（使ってるモノ＝楽天アフィリエイト。並びはシャッフル） |
 | `assets/system.css` | 404 LIFE SYSTEM のUI・演出（BOOT、CRT、たまに起きる不具合、読み込み演出、背景） |
-| `assets/about.css` | ファイルページ（ABOUT・GEAR）共通の部品（ファイル見出し、本文枠、画像枠、RETURNボタンなど） |
-| `assets/gear.css` / `assets/gear.js` | GEARの持ち物カード／件数・読み込み演出・管理番号の重複チェック |
+| `assets/about.css` | ファイルページ（ABOUT・ORIGINAL・GEAR）共通の部品（ファイル見出し、本文枠、画像枠、RETURNボタンなど） |
+| `assets/gear.css` / `assets/gear.js` | ORIGINAL・GEAR共通の持ち物カード／件数・読み込み演出・管理番号の重複チェック・クリック数の記録・シャッフル（`data-shuffle` を付けたリストだけ） |
 | `assets/system.js` | BOOTの終了・スキップ、背景のスクロール連動、不具合演出の間隔、読み込み演出 |
 | `assets/garage-bg.webp` | 背景のガレージ画像（725×2170） |
 | `assets/404-avatar.webp` | プロフィールの丸アイコン（`0C740438-….png` から切り出し） |
@@ -35,7 +36,7 @@
 - 背景：スクロールに合わせて画像の上端（天井）→下端（床）へ移動。
 - たまに起きる不具合：4〜10秒に1回、画面内の1か所（まれに2か所）だけ、文字のズレ／RGBずれ／ラインや照明のちらつき。対象は `data-glitch`（`="soft"` は小さいズレ）と `data-flicker` を付けた要素。
 - 「動きを減らす」設定（prefers-reduced-motion）では、BOOT・不具合・読み込み演出・ノイズ・背景の移動を止める。
-- TOP の構成は 01 ABOUT 404 / 02 GEAR / 03 SNS（上部ナビは TOP / ABOUT 404 / GEAR / SNS）。GEAR は `gear.html` へ。
+- TOP の構成は 01 ABOUT 404 / 02 ORIGINAL / 03 GEAR / 04 SNS（上部ナビは TOP / ABOUT 404 / ORIGINAL / GEAR / SNS、`sys-nav--5`）。ORIGINAL は `original.html`、GEAR は `gear.html` へ。
 
 ## ページの共通部分
 
@@ -60,3 +61,11 @@ TOP と ABOUT は同じ `system.css` / `system.js` を読み込む（背景・BO
 - 並び順は、ページを開くたびにランダムに入れ替わる（gear.js）。HTMLに書く順番は管理しやすい順でよい。
 - リンク付きカードが押されると、管理番号だけをクリック数の受け口（Cloudflare Worker `404-life-clicks`）へ送る。集計はVaultの `click-counter/` で行い、サイトには表示しない。管理番号を変えると、別の持ち物として数え直しになる。
 - ページ上部のPR表記は、広告リンクがある限り消さない。
+
+## ORIGINAL の商品を追加する
+
+`original.html` の `<ol class="sys-gear-list sys-gear-list--original">` の中。GEARと同じ1行の形で、rel は `noopener`（自社グッズなので sponsored は付けない）。
+
+- 並びは固定。PCでは2列で、左→右、上→下。上から T-SHIRT → HOODIE → ZIP HOODIE（各2枚ずつ横に並ぶ）、その下に小物。
+- `<li class="sys-slot-row">` は「次の作品用の空き地」（リンクなし、EMPTY SLOT 表示）。件数・クリック数には入らない。新作が出たら、空き地の行を商品の行に置き換え、次の空き地を足す。
+- 楽天のリンクは `gear.html` へ。SUZURIのリンクは `original.html` へ。

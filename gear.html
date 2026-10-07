@@ -83,10 +83,10 @@
     <!-- BOOT演出（TOPと共通） -->
     <div class="sys-boot" aria-hidden="true">
         <div class="sys-boot__panel">
-            <p class="sys-boot__head"><span>404 // LIFE SYSTEM</span><span>FILE 02</span></p>
+            <p class="sys-boot__head"><span>404 // LIFE SYSTEM</span><span>FILE 03</span></p>
             <ol class="sys-boot__log">
                 <li style="--d:0">BOOTING...</li>
-                <li style="--d:1">OPENING FILE 02...</li>
+                <li style="--d:1">OPENING FILE 03...</li>
                 <li style="--d:2"><span>BODY</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
                 <li style="--d:3"><span>GARAGE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
                 <li style="--d:4"><span>PLAY MODE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
@@ -126,33 +126,34 @@
                 </p>
             </div>
 
-            <!-- 上部ナビ（TOP / ABOUT / GEAR / SNS） -->
+            <!-- 上部ナビ（TOP / ABOUT / ORIGINAL / GEAR / SNS） -->
             <nav aria-label="メニュー">
-                <ul class="sys-nav sys-nav--4">
+                <ul class="sys-nav sys-nav--5">
                     <li><a href="index.html">TOP</a></li>
                     <li><a href="about.html">ABOUT 404</a></li>
+                    <li><a href="original.html">ORIGINAL</a></li>
                     <li><a href="gear.html" aria-current="page"><span data-glitch="soft">GEAR</span></a></li>
                     <li><a href="index.html#sns-section">SNS</a></li>
                 </ul>
             </nav>
 
             <p class="sys-file-path">
-                <span>PATH : <b>/GARAGE_No.404/FILE_02</b></span>
+                <span>PATH : <b>/GARAGE_No.404/FILE_03</b></span>
                 <span class="sys-file-path__state"><i class="sys-lamp" data-flicker></i>FILE OPEN</span>
             </p>
         </header>
 
         <main id="main">
 
-            <!-- 導入：02 // GEAR -->
+            <!-- 導入：03 // GEAR -->
             <section class="sys-about-sec" aria-labelledby="gear-title">
                 <div class="sys-sec-head" data-sys-load>
-                    <span>02 // GEAR</span>
+                    <span>03 // GEAR</span>
                     <span class="sys-sec-head__state"><i class="sys-lamp"></i>INVENTORY</span>
                 </div>
 
                 <div class="sys-file-id" data-sys-load style="--sys-delay:60ms">
-                    <span class="sys-file-no" data-glitch aria-hidden="true">02</span>
+                    <span class="sys-file-no" data-glitch aria-hidden="true">03</span>
                     <div class="sys-file-id__body">
                         <span class="sys-file-id__label">SYSTEM // FILE</span>
                         <h1 id="gear-title" class="sys-file-title" data-glitch>GEAR</h1>
@@ -166,7 +167,7 @@
                         <span class="sys-inventory__state"><i class="sys-lamp" data-flicker></i>ITEMS : <b data-gear-count>---</b></span>
                     </p>
                     <!-- PR表記：リンク先は楽天アフィリエイト（広告）。本文の前に置く -->
-                    <p class="sys-pr"><b>PR</b><span>このページのリンクには、404 LIFEのオリジナルグッズ（SUZURI）と、広告（楽天アフィリエイト）が含まれます。</span></p>
+                    <p class="sys-pr"><b>PR</b><span>このページのリンクには、広告（楽天アフィリエイト）が含まれます。</span></p>
                 </div>
 
                 <!--
@@ -175,27 +176,17 @@
                     ・カテゴリ // 番号 … カテゴリごとに 001 から連番（例：CAMERA // 003）
                     ・表示名 …………… 404視点の名前（例：俺のカメラ）
                     ・href ……………… 楽天アフィリエイトのURL。未設定の間は "#"（自動で STANDBY 表示。押すと「ただいま準備中」と表示）
-                  rel は、広告（楽天アフィリエイトなど）なら "sponsored noopener"、404 LIFEのオリジナルグッズ（SUZURI）なら "noopener"。
+                  rel は "sponsored noopener"（広告の印）。404 LIFEのオリジナルグッズ（SUZURI）はここではなく original.html に入れる。
+                  並びは、ページを開くたびにランダムに入れ替わる（data-shuffle）。
                 -->
-                <ol class="sys-gear-list">
+                <ol class="sys-gear-list" data-shuffle>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581052ee.ce1eda17.581052ef.9484ce45/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhomeshop%2F3199-nik-0024%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 001</span><span class="sys-gear__name">俺のカメラ</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5812d59d.6bd0ddfd.5812d59e.dffbed81/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fshasinyasan%2F4960759133182%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 002</span><span class="sys-gear__name">俺のカメラストラップ</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5812d59d.6bd0ddfd.5812d59e.dffbed81/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fshasinyasan%2F4571284728028%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 003</span><span class="sys-gear__name">俺のカメラケース</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581391fe.11e34280.581391ff.8253be8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkentfaith%2Fkf13-163-jp%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">CAMERA // 004</span><span class="sys-gear__name">俺のカメラバッグ</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5813a966.20d7c9af.5813a967.9e6039fa/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkicksparrow%2Fu4078418%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">SHOES // 001</span><span class="sys-gear__name">俺のスニーカー</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5813b885.b6f2ffd5.5813b886.e403eba4/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fwarabiueda1968%2Fcompass1757842945%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">SHOES // 002</span><span class="sys-gear__name">俺の安全靴</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">HOODIE // 001</span><span class="sys-gear__name">俺のパーカー</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">HOODIE // 002</span><span class="sys-gear__name">俺のパーカー</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/zip-hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">ZIP HOODIE // 001</span><span class="sys-gear__name">俺のパーカー</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/zip-hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">ZIP HOODIE // 002</span><span class="sys-gear__name">俺のパーカー</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/t-shirt/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">T-SHIRT // 001</span><span class="sys-gear__name">俺のＴシャツ</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/t-shirt/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">T-SHIRT // 002</span><span class="sys-gear__name">俺のＴシャツ</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/thermo-tumbler/360ml/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">GOODS // 001</span><span class="sys-gear__name">俺のタンブラー</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/mug/m/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">GOODS // 002</span><span class="sys-gear__name">俺のマグカップ</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/washed-canvas-cross-apron-for-shop/free/camel?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">APRON // 001</span><span class="sys-gear__name">俺のエプロン</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21057199/d-factory-tasukigake-apron-for-shop/f/chocolate?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">APRON // 002</span><span class="sys-gear__name">俺のエプロン</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58160c01.e6ac9747.58160c02.8823bc5f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-t-link%2Fkgo016%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">PANTS // 001</span><span class="sys-gear__name">俺のカーゴパンツ</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21055481/united-athle-cotton-twill-low-cap-for-shop/f/stoneblue?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">CAP // 001</span><span class="sys-gear__name">俺のキャップ</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/58163fb8.f1f9beb0.58163fbf.85563737/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbiccamera%2F0753759322540%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">WATCH // 001</span><span class="sys-gear__name">俺の時計</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581657dc.6d4bfd0c.581657dd.ddce0832/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsunglasshouse%2Fokly00-01394%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">GLASSES // 001</span><span class="sys-gear__name">俺のサングラス</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/5816630b.4272aae5.5816630c.c04401cd/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fside7%2F10001203%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">WALLET // 001</span><span class="sys-gear__name">俺の財布</span></a></li>
@@ -242,23 +233,9 @@
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581bf557.7de5cd24.581bf558.f491c988/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-roadster%2F10006559%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">COLLAR // 001</span><span class="sys-gear__name">俺の犬の首輪</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581bfd1f.c92d3faf.581bfd20.726435bc/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpetifam%2F6953182748168%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">TOY // 001</span><span class="sys-gear__name">俺の犬のおもちゃ</span></a></li>
                     <li><a class="sys-gear" href="https://hb.afl.rakuten.co.jp/ichiba/581c0242.b095c5f9.581c0247.7c1c6209/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fyogibo%2Fdgb-l%2F&amp;link_type=hybrid_url&amp;ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="sponsored noopener"><span class="sys-gear__id">BED // 001</span><span class="sys-gear__name">俺の犬のヨギボー</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/t-shirt/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">T-SHIRT // 003</span><span class="sys-gear__name">俺のＴシャツ</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/heavyweight-sweat/l/offwhite?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">SWEAT // 001</span><span class="sys-gear__name">俺のスウェット</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/united-athle-10-0oz-sweat-bib-ura-pile-for-shop/free/ash?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">BIB // 001</span><span class="sys-gear__name">俺のスタイ</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/face-towel/free/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">TOWEL // 001</span><span class="sys-gear__name">俺のタオル</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/acrylic-keychain/50x50mm/clear?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">KEYCHAIN // 001</span><span class="sys-gear__name">俺のキーホルダー</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/lunch-tote-bag/s/natural?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">BAG // 003</span><span class="sys-gear__name">俺のトートバッグ</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">HOODIE // 003</span><span class="sys-gear__name">俺のパーカー</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/bucket-hat/l/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">HAT // 001</span><span class="sys-gear__name">俺のハット</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/mug/m/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">GOODS // 003</span><span class="sys-gear__name">俺のマグカップ</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/thermo-tumbler/360ml/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">GOODS // 004</span><span class="sys-gear__name">俺のタンブラー</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/blanket/m/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">BLANKET // 001</span><span class="sys-gear__name">俺のブランケット</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/cushion/free/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">CUSHION // 001</span><span class="sys-gear__name">俺のクッション</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/reusable-bag/m/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">BAG // 004</span><span class="sys-gear__name">俺のエコバッグ</span></a></li>
-                    <li><a class="sys-gear" href="https://suzuri.jp/404LIFE/21081349/zip-hoodie/s/white?utm_source=others&amp;utm_medium=social&amp;utm_campaign=item_detail_share" target="_blank" rel="noopener"><span class="sys-gear__id">ZIP HOODIE // 003</span><span class="sys-gear__name">俺のパーカー</span></a></li>
                 </ol>
 
-                <p class="sys-gear-note" aria-hidden="true">END OF LIST // 02</p>
+                <p class="sys-gear-note" aria-hidden="true">END OF LIST // 03</p>
             </section>
 
             <!-- 最終：TOPへ戻る -->
