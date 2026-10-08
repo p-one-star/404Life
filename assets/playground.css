@@ -342,3 +342,27 @@
 
 /* 補足付きカード：→ を3行ぶんの高さで中央に */
 .sys-gear.sys-gear--in::after { grid-row: 1 / span 3; }
+
+/* 隠しワード：白系の札で40ワードと見分ける */
+.ws-bonus-count { white-space: nowrap; color: #a3a3a3; }
+[data-bonus] .ws-bonus-count { color: #fff; }
+[data-bonus] .ws-bonus-count b { color: #fff; }
+
+.ws-chip--bonus {
+  border-color: rgba(255, 255, 255, 0.45);
+  border-left-color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ws-chip--bonus .ws-chip__word::before {
+  content: "BONUS";
+  margin-right: 8px;
+  padding: 1px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-family: var(--sys-mono);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  vertical-align: 2px;
+  color: #dcdcdc;
+}

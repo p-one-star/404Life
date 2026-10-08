@@ -167,18 +167,18 @@
                 <!--
                   ===== 文字探し 001：答え合わせ =====
                   ・盤面の文字は下の .ws-grid（13×13、左上から右へ、行ごと）。Threadsの画像と同じ並び。
-                  ・答えはページに書かない。data-ws-key は正解40語のハッシュ値（assets/word-search.js で照合）。
+                  ・答えはページに書かない。data-ws-key は正解40語、data-ws-bonus は隠しワード（偶然できた誰でも分かる言葉）のハッシュ値（assets/word-search.js で照合）。
                   ・答えの一覧の元画像は source-assets/（公開しない）。
                 -->
-                <div class="ws" data-ws="001" data-ws-key='["12v79mmvbwm", "16m0hfieidz", "1806597io8a", "1gagtugumxi", "1h2b4fnemot", "1kv8xwrixau", "1ph3sqbjnwd", "1rsahwio2hw", "1s6hrpcndba", "1t9qihj0x9f", "1twp1lp21q6", "1tx4tuwaegp", "1u060cxtg92", "1zknxebfa7", "21jp6i7zy68", "227kwx1hcdh", "23nmc43lmpl", "265ftyzx9ls", "28z45laax9", "2w3nztxg1i", "3g9d4mq8cn", "3rotb3ulrj", "4gi8rfj06q", "6rd4voctul", "8lbqbcltg6", "8t8l3ff71v", "9emw656izw", "cec7dwen2k", "cwpek6ffzw", "cxcfol0tpn", "dqmppf757i", "fr9xvs0749", "kswrdgzpef", "lj17i7mvyc", "mb3b0gg5b6", "pjsf2fyc6m", "pke3xu4m6t", "r6eszcudr5", "twasdahpxu", "xhv3hew0cf"]'>
+                <div class="ws" data-ws="001" data-ws-bonus='["10aotoqovgy", "138cwq3c50c", "16owmvpesmc", "182iqdpbxyd", "19xme0gtgpa", "1b5kfufzza8", "1brhxuqb6b", "1bs66kv4ovj", "1cdk8cqsjbr", "1cumin5mctt", "1el4uwh2fs7", "1eow2z7xwvc", "1gcfw8q2438", "1ha32riqjuu", "1k3bl8kom1e", "1l7s9xjyp1l", "1m61zjme5q8", "1rr7bapc1s9", "1zcyzgyky39", "20061r9cb0q", "21hkv04bagl", "26hs660s8ym", "26x2rjen08j", "28k947pz84n", "29w833v6qfw", "2b3fotore3f", "2g75p2a5uy0", "2whprmph0j", "6xosy75b2b", "7fwq70qp5r", "9fq6z4g5sq", "9wpjsbdbuu", "abedzfjysa", "aoo6e0rnjq", "azvb1o0vht", "b09hxba7zy", "cyarqhmp77", "dhz8xz7rko", "hjlr0436jq", "hlk1lqniry", "huqzeg0goy", "hwj079iz12", "hzn8g1vzp1", "j3y5zgqnzg", "jr9fdos5do", "klcw13qsrh", "npgf95xocm", "of7vjbt6pg", "pajemy90lq", "pki0jnxwwy", "qwu2spm4fl", "t0b8w3kjdr", "t1f7w4iqs1", "t459ozt6ov", "uc7wlw78bb", "ukydsda666", "w9wttff5lz", "wdfu21r729", "x0g27fxmf5", "z2i9jlak4k"]' data-ws-key='["12v79mmvbwm", "16m0hfieidz", "1806597io8a", "1gagtugumxi", "1h2b4fnemot", "1kv8xwrixau", "1ph3sqbjnwd", "1rsahwio2hw", "1s6hrpcndba", "1t9qihj0x9f", "1twp1lp21q6", "1tx4tuwaegp", "1u060cxtg92", "1zknxebfa7", "21jp6i7zy68", "227kwx1hcdh", "23nmc43lmpl", "265ftyzx9ls", "28z45laax9", "2w3nztxg1i", "3g9d4mq8cn", "3rotb3ulrj", "4gi8rfj06q", "6rd4voctul", "8lbqbcltg6", "8t8l3ff71v", "9emw656izw", "cec7dwen2k", "cwpek6ffzw", "cxcfol0tpn", "dqmppf757i", "fr9xvs0749", "kswrdgzpef", "lj17i7mvyc", "mb3b0gg5b6", "pjsf2fyc6m", "pke3xu4m6t", "r6eszcudr5", "twasdahpxu", "xhv3hew0cf"]'>
                     <img class="ws-logo" src="assets/ws-logo.webp" width="770" height="270" alt="404 LIFE. TOO LOUD // TOO BROKEN // TOO ALIVE" data-sys-load style="--sys-delay:120ms">
 
                     <div data-sys-load style="--sys-delay:160ms">
                         <p class="sys-inventory">
-                            <span>40 WORDS</span>
                             <span class="sys-inventory__state"><i class="sys-lamp" data-flicker></i>FOUND : <b data-ws-count>00 / 40</b></span>
+                            <span class="ws-bonus-count">BONUS : <b data-ws-bonus-count>00</b></span>
                         </p>
-                        <p class="ws-how">Threadsのパズルで見つけたワードを入力。正解なら、盤面のその場所が光る。ひらがなで入れてもOK。</p>
+                        <p class="ws-how">Threadsのパズルで見つけたワードを入力。正解なら、盤面のその場所が光る。ひらがなで入れてもOK。40ワードのほかに、隠しワードもある。</p>
 
                         <form class="ws-search" role="search" autocomplete="off">
                             <input class="ws-search__input" type="search" name="w" placeholder="見つけたワードを入力" aria-label="見つけたワード" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="20">
