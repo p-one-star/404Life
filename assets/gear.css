@@ -340,6 +340,7 @@
 
 /* 長い見出し（ORIGINAL / WORK GEAR / PLAY GEAR）は少し小さく */
 .sys-file-title--long { font-size: clamp(1.5rem, 7.4vw, 2.8rem); }
+.sys-file-title--xl { font-size: clamp(1.1rem, 5.6vw, 2.8rem); }
 
 @media (max-width: 359px) {
   .sys-gear { padding-left: 12px; column-gap: 8px; }

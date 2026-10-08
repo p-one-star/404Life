@@ -667,20 +667,42 @@ html[data-boot="short"] .sys-boot__line {
   .sys-nav.sys-nav--5 a[aria-current] { padding: 0 8px; }
 }
 
-/* 6項目のナビ（TOP / ABOUT 404 / ORIGINAL / WORK GEAR / PLAY GEAR / SNS）
-   スマホ：3列×2段（区切り線は .sys-nav の基本ルール）。600px以上：1段で右寄せ */
+/* 7項目のナビ（TOP / ABOUT 404 / ORIGINAL / WORK GEAR / PLAY GEAR / PLAYGROUND / SNS）
+   スマホ：4列×2段。600px以上：1段で右寄せ（入らない幅では折り返す） */
 @media (max-width: 599px) {
-  .sys-nav.sys-nav--6 a { min-height: 38px; padding: 0 6px; font-size: 12.5px; letter-spacing: 0; }
-  .sys-nav.sys-nav--6 a[aria-current] { padding: 0 9px; }
-  .sys-nav.sys-nav--6 a[aria-current]::before { top: 6px; bottom: 6px; }
+  .sys-nav.sys-nav--7 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .sys-nav.sys-nav--7 li:not(:nth-child(3n + 1))::before { content: none; }
+  .sys-nav.sys-nav--7 li:not(:nth-child(4n + 1))::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 14px;
+    margin-top: -7px;
+    background: rgba(255, 255, 255, 0.55);
+  }
+  .sys-nav.sys-nav--7 a { min-height: 38px; padding: 0 4px; font-size: 11.5px; letter-spacing: 0; }
+  .sys-nav.sys-nav--7 a[aria-current] { padding: 0 7px; }
+  .sys-nav.sys-nav--7 a[aria-current]::before { top: 6px; bottom: 6px; }
+}
+
+@media (min-width: 600px) {
+  .sys-nav.sys-nav--7 { flex-wrap: wrap; }
 }
 
 @media (min-width: 600px) and (max-width: 767px) {
-  .sys-nav.sys-nav--6 a { padding: 0 7px; font-size: 13px; }
+  .sys-nav.sys-nav--7 a { padding: 0 6px; font-size: 12.5px; }
+}
+
+@media (min-width: 768px) {
+  .sys-nav.sys-nav--7 a { padding: 0 8px; font-size: 13.5px; }
+  .sys-nav.sys-nav--7 a[aria-current] { padding: 0 12px; }
 }
 
 @media (max-width: 359px) {
-  .sys-nav.sys-nav--6 a { padding: 0 4px; font-size: 11.5px; }
+  .sys-nav.sys-nav--7 a { padding: 0 2px; font-size: 10px; }
+  .sys-nav.sys-nav--7 a[aria-current] { padding: 0 5px; }
 }
 
 /* ---------- プロフィール ---------- */

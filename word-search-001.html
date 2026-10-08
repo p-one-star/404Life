@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>WORD SEARCH 001 | 404LIFE</title>
+    <meta name="description" content="404 LIFEの文字探しパズル001の答え合わせ。見つけたワードを入力すると、盤面の場所が光る。">
+
+    <!-- BOOT判定（TOPと共通）：同一セッションの再表示は短縮、動きを減らす設定では表示しない -->
+    <script>
+        (function (h) {
+            try {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                var seen = null;
+                try { seen = sessionStorage.getItem('404-life-boot'); sessionStorage.setItem('404-life-boot', '1'); } catch (e) {}
+                h.setAttribute('data-boot', seen ? 'short' : 'full');
+            } catch (e) {}
+        })(document.documentElement);
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- 404 LIFE SYSTEM（TOPと共通）＋ ファイルページ共通（about.css）＋ カード（gear.css）＋ PLAYGROUND専用（playground.css） -->
+    <link rel="preload" as="image" href="assets/garage-bg.webp" type="image/webp">
+    <link rel="stylesheet" href="assets/system.css">
+    <link rel="stylesheet" href="assets/about.css">
+    <link rel="stylesheet" href="assets/gear.css">
+    <link rel="stylesheet" href="assets/playground.css">
+    <script src="assets/word-search.js" defer></script>
+    <script src="assets/system.js" defer></script>
+
+    <!-- Tailwind CSS（TOPと同じ基本スタイルにそろえるため） -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#ccff00', // 蛍光イエロー
+                        bgBase: '#000000', // 真っ黒
+                        lineDark: '#222222', // ダークグレーの罫線
+                        textMuted: '#888888', // くすんだ白
+                    },
+                    fontFamily: {
+                        'blackops': ['"Black Ops One"', 'system-ui'],
+                        'sans': ['"Noto Sans JP"', 'sans-serif'],
+                        'mono': ['"Share Tech Mono"', 'monospace'],
+                    },
+                    letterSpacing: {
+                        'super-wide': '0.2em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* 選択時のハイライト色を変更 */
+        ::selection {
+            background: #ccff00;
+            color: #000000;
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen">
+
+    <a href="#main" class="sys-skip">本文へスキップ</a>
+
+    <!-- 背景：ガレージ（TOPと共通。画像は assets/system.css の --sys-bg-image） -->
+    <div class="sys-bg" aria-hidden="true"><div class="sys-bg__img"></div></div>
+
+    <!-- BOOT演出（TOPと共通） -->
+    <div class="sys-boot" aria-hidden="true">
+        <div class="sys-boot__panel">
+            <p class="sys-boot__head"><span>404 // LIFE SYSTEM</span><span>FILE 05</span></p>
+            <ol class="sys-boot__log">
+                <li style="--d:0">BOOTING...</li>
+                <li style="--d:1">OPENING FILE 05...</li>
+                <li style="--d:2"><span>BODY</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:3"><span>GARAGE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+                <li style="--d:4"><span>PLAY MODE</span><span class="sys-boot__dots"></span><b>ONLINE</b></li>
+            </ol>
+            <div class="sys-boot__bar"><span></span></div>
+            <p class="sys-boot__logo"><span>404</span> LIFE</p>
+            <p class="sys-boot__jp">人生整備中。</p>
+        </div>
+        <p class="sys-boot__skip">TAP TO SKIP</p>
+        <div class="sys-boot__line"></div>
+    </div>
+
+    <!-- CRT／監視モニター効果（TOPと共通） -->
+    <div class="sys-crt" aria-hidden="true"><span class="sys-crt__roll"></span></div>
+
+    <div id="top" class="sys-page">
+        <div class="sys-rails" aria-hidden="true" data-flicker></div>
+
+        <header class="sys-head">
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+
+            <div class="sys-head__top">
+                <div class="sys-sysmenu">
+                    <p class="m-0" data-glitch="soft">404 LIFE SYSTEM</p>
+                    <ul>
+                        <li>CAR</li>
+                        <li>FASHION</li>
+                        <li>GEAR</li>
+                        <li>PLAY</li>
+                        <li>LIFE</li>
+                    </ul>
+                </div>
+                <p class="sys-id">
+                    <span class="sys-barcode" aria-hidden="true" data-flicker></span>
+                    <span data-glitch="soft">JINZOU NINGEN 404</span>
+                </p>
+            </div>
+
+            <!-- 上部ナビ（TOP / ABOUT / ORIGINAL / WORK GEAR / PLAY GEAR / PLAYGROUND / SNS）：スマホは4列×2段、PCは1段 -->
+            <nav aria-label="メニュー">
+                <ul class="sys-nav sys-nav--7">
+                    <li><a href="index.html">TOP</a></li>
+                    <li><a href="about.html">ABOUT 404</a></li>
+                    <li><a href="original.html">ORIGINAL</a></li>
+                    <li><a href="gear.html">WORK GEAR</a></li>
+                    <li><a href="play.html">PLAY GEAR</a></li>
+                    <li><a href="playground.html" aria-current="page"><span data-glitch="soft">PLAYGROUND</span></a></li>
+                    <li><a href="index.html#sns-section">SNS</a></li>
+                </ul>
+            </nav>
+
+            <p class="sys-file-path">
+                <span>PATH : <b>/GARAGE_No.404/FILE_05</b></span>
+                <span class="sys-file-path__state"><i class="sys-lamp" data-flicker></i>FILE OPEN</span>
+            </p>
+        </header>
+
+        <main id="main">
+
+            <!-- 導入：05 // PLAYGROUND // WORD SEARCH -->
+            <section class="sys-about-sec" aria-labelledby="ws-title">
+                <div class="sys-sec-head" data-sys-load>
+                    <span>05 // WORD SEARCH</span>
+                    <span class="sys-sec-head__state"><i class="sys-lamp"></i>BOARD 001</span>
+                </div>
+
+                <div class="sys-file-id" data-sys-load style="--sys-delay:60ms">
+                    <span class="sys-file-no" data-glitch aria-hidden="true">05</span>
+                    <div class="sys-file-id__body">
+                        <span class="sys-file-id__label">SYSTEM // FILE</span>
+                        <h1 id="ws-title" class="sys-file-title sys-file-title--long" data-glitch>WORD SEARCH</h1>
+                        <p class="sys-gear-sub">文字探し 001</p>
+                    </div>
+                </div>
+
+                <!--
+                  ===== 文字探し 001：答え合わせ =====
+                  ・盤面の文字は下の .ws-grid（13×13、左上から右へ、行ごと）。Threadsの画像と同じ並び。
+                  ・答えはページに書かない。data-ws-key は正解40語のハッシュ値（assets/word-search.js で照合）。
+                  ・答えの一覧の元画像は source-assets/（公開しない）。
+                -->
+                <div class="ws" data-ws="001" data-ws-key='["12v79mmvbwm", "16m0hfieidz", "1806597io8a", "1gagtugumxi", "1h2b4fnemot", "1kv8xwrixau", "1ph3sqbjnwd", "1rsahwio2hw", "1s6hrpcndba", "1t9qihj0x9f", "1twp1lp21q6", "1tx4tuwaegp", "1u060cxtg92", "1zknxebfa7", "21jp6i7zy68", "227kwx1hcdh", "23nmc43lmpl", "265ftyzx9ls", "28z45laax9", "2w3nztxg1i", "3g9d4mq8cn", "3rotb3ulrj", "4gi8rfj06q", "6rd4voctul", "8lbqbcltg6", "8t8l3ff71v", "9emw656izw", "cec7dwen2k", "cwpek6ffzw", "cxcfol0tpn", "dqmppf757i", "fr9xvs0749", "kswrdgzpef", "lj17i7mvyc", "mb3b0gg5b6", "pjsf2fyc6m", "pke3xu4m6t", "r6eszcudr5", "twasdahpxu", "xhv3hew0cf"]'>
+                    <img class="ws-logo" src="assets/ws-logo.webp" width="770" height="270" alt="404 LIFE. TOO LOUD // TOO BROKEN // TOO ALIVE" data-sys-load style="--sys-delay:120ms">
+
+                    <div data-sys-load style="--sys-delay:160ms">
+                        <p class="sys-inventory">
+                            <span>40 WORDS</span>
+                            <span class="sys-inventory__state"><i class="sys-lamp" data-flicker></i>FOUND : <b data-ws-count>00 / 40</b></span>
+                        </p>
+                        <p class="ws-how">Threadsのパズルで見つけたワードを入力。正解なら、盤面のその場所が光る。ひらがなで入れてもOK。</p>
+
+                        <form class="ws-search" role="search" autocomplete="off">
+                            <input class="ws-search__input" type="search" name="w" placeholder="見つけたワードを入力" aria-label="見つけたワード" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="20">
+                            <button class="ws-search__btn" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span>SEARCH</span></button>
+                        </form>
+                        <p class="ws-msg" role="status" aria-live="polite"></p>
+                    </div>
+
+                    <div class="ws-board" data-sys-load style="--sys-delay:200ms">
+                        <div class="ws-grid" aria-label="文字探しの盤面（13×13）">
+                            <span class="ws-cell">マ</span><span class="ws-cell">ル</span><span class="ws-cell">ボ</span><span class="ws-cell">ロ</span><span class="ws-cell">ト</span><span class="ws-cell">ゴ</span><span class="ws-cell">ゲ</span><span class="ws-cell">ガ</span><span class="ws-cell">ク</span><span class="ws-cell">ガ</span><span class="ws-cell">ラ</span><span class="ws-cell">オ</span><span class="ws-cell">ボ</span>
+                            <span class="ws-cell">ル</span><span class="ws-cell">エ</span><span class="ws-cell">セ</span><span class="ws-cell">ク</span><span class="ws-cell">ダ</span><span class="ws-cell">ル</span><span class="ws-cell">マ</span><span class="ws-cell">ニ</span><span class="ws-cell">イ</span><span class="ws-cell">ー</span><span class="ws-cell">ニ</span><span class="ws-cell">タ</span><span class="ws-cell">ボ</span>
+                            <span class="ws-cell">ノ</span><span class="ws-cell">ア</span><span class="ws-cell">パ</span><span class="ws-cell">ド</span><span class="ws-cell">ン</span><span class="ws-cell">ケ</span><span class="ws-cell">キ</span><span class="ws-cell">タ</span><span class="ws-cell">コ</span><span class="ws-cell">ギ</span><span class="ws-cell">ワ</span><span class="ws-cell">ネ</span><span class="ws-cell">グ</span>
+                            <span class="ws-cell">コ</span><span class="ws-cell">ン</span><span class="ws-cell">イ</span><span class="ws-cell">デ</span><span class="ws-cell">ン</span><span class="ws-cell">ヤ</span><span class="ws-cell">テ</span><span class="ws-cell">マ</span><span class="ws-cell">リ</span><span class="ws-cell">カ</span><span class="ws-cell">ハ</span><span class="ws-cell">シ</span><span class="ws-cell">カ</span>
+                            <span class="ws-cell">イ</span><span class="ws-cell">ゼ</span><span class="ws-cell">ー</span><span class="ws-cell">メ</span><span class="ws-cell">バ</span><span class="ws-cell">ラ</span><span class="ws-cell">ガ</span><span class="ws-cell">グ</span><span class="ws-cell">ア</span><span class="ws-cell">イ</span><span class="ws-cell">コ</span><span class="ws-cell">ス</span><span class="ws-cell">ス</span>
+                            <span class="ws-cell">ッ</span><span class="ws-cell">ン</span><span class="ws-cell">リ</span><span class="ws-cell">ロ</span><span class="ws-cell">ラ</span><span class="ws-cell">オ</span><span class="ws-cell">リ</span><span class="ws-cell">ロ</span><span class="ws-cell">エ</span><span class="ws-cell">ス</span><span class="ws-cell">ガ</span><span class="ws-cell">ョ</span><span class="ws-cell">コ</span>
+                            <span class="ws-cell">タ</span><span class="ws-cell">グ</span><span class="ws-cell">コ</span><span class="ws-cell">パ</span><span class="ws-cell">ャ</span><span class="ws-cell">ン</span><span class="ws-cell">メ</span><span class="ws-cell">ー</span><span class="ws-cell">ラ</span><span class="ws-cell">マ</span><span class="ws-cell">マ</span><span class="ws-cell">ヨ</span><span class="ws-cell">ハ</span>
+                            <span class="ws-cell">コ</span><span class="ws-cell">ツ</span><span class="ws-cell">シ</span><span class="ws-cell">ア</span><span class="ws-cell">キ</span><span class="ws-cell">キ</span><span class="ws-cell">ス</span><span class="ws-cell">ニ</span><span class="ws-cell">ン</span><span class="ws-cell">ゼ</span><span class="ws-cell">ン</span><span class="ws-cell">ア</span><span class="ws-cell">ゴ</span>
+                            <span class="ws-cell">ン</span><span class="ws-cell">ー</span><span class="ws-cell">ノ</span><span class="ws-cell">ム</span><span class="ws-cell">エ</span><span class="ws-cell">イ</span><span class="ws-cell">ッ</span><span class="ws-cell">ヤ</span><span class="ws-cell">ケ</span><span class="ws-cell">マ</span><span class="ws-cell">ハ</span><span class="ws-cell">マ</span><span class="ws-cell">モ</span>
+                            <span class="ws-cell">パ</span><span class="ws-cell">ロ</span><span class="ws-cell">ヒ</span><span class="ws-cell">オ</span><span class="ws-cell">ラ</span><span class="ws-cell">ト</span><span class="ws-cell">ダ</span><span class="ws-cell">バ</span><span class="ws-cell">ル</span><span class="ws-cell">ジ</span><span class="ws-cell">ー</span><span class="ws-cell">ガ</span><span class="ws-cell">ヌ</span>
+                            <span class="ws-cell">ズ</span><span class="ws-cell">メ</span><span class="ws-cell">メ</span><span class="ws-cell">ー</span><span class="ws-cell">ト</span><span class="ws-cell">ケ</span><span class="ws-cell">ボ</span><span class="ws-cell">ヨ</span><span class="ws-cell">ヒ</span><span class="ws-cell">パ</span><span class="ws-cell">ャ</span><span class="ws-cell">ジ</span><span class="ws-cell">ゲ</span>
+                            <span class="ws-cell">ル</span><span class="ws-cell">ク</span><span class="ws-cell">レ</span><span class="ws-cell">ヨ</span><span class="ws-cell">ン</span><span class="ws-cell">シ</span><span class="ws-cell">ン</span><span class="ws-cell">チ</span><span class="ws-cell">ャ</span><span class="ws-cell">ン</span><span class="ws-cell">チ</span><span class="ws-cell">ン</span><span class="ws-cell">ラ</span>
+                            <span class="ws-cell">ケ</span><span class="ws-cell">カ</span><span class="ws-cell">リ</span><span class="ws-cell">フ</span><span class="ws-cell">ジ</span><span class="ws-cell">ワ</span><span class="ws-cell">ゴ</span><span class="ws-cell">ビ</span><span class="ws-cell">ー</span><span class="ws-cell">ル</span><span class="ws-cell">バ</span><span class="ws-cell">ピ</span><span class="ws-cell">プ</span>
+                        </div>
+                    </div>
+
+                    <div class="ws-found" data-sys-load>
+                        <div class="ws-found__head">
+                            <h2 class="ws-found__title">FOUND WORDS</h2>
+                            <button class="ws-clear-all" type="button" disabled><svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21h13"/><path d="M15.5 3.5l5 5a1.4 1.4 0 0 1 0 2L12 19H7.5l-4-4a1.4 1.4 0 0 1 0-2l10-9.5a1.4 1.4 0 0 1 2 0z"/><path d="M9 9.5l5.5 5.5"/></svg><span>ALL CLEAR</span></button>
+                        </div>
+                        <p class="ws-found__empty">まだ見つけたワードはない。</p>
+                        <ul class="ws-found__list"></ul>
+                        <template id="ws-chip"><li class="ws-chip"><button class="ws-chip__word" type="button"></button><button class="ws-chip__erase" type="button"><svg class="ws-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21h13"/><path d="M15.5 3.5l5 5a1.4 1.4 0 0 1 0 2L12 19H7.5l-4-4a1.4 1.4 0 0 1 0-2l10-9.5a1.4 1.4 0 0 1 2 0z"/><path d="M9 9.5l5.5 5.5"/></svg></button></li></template>
+                    </div>
+                </div>
+
+                <p class="sys-gear-note" aria-hidden="true">END OF BOARD // 001</p>
+            </section>
+
+            <!-- 最終：TOPへ戻る -->
+            <section class="sys-final" aria-label="WORD SEARCHへ戻る">
+                <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+                <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+                <div data-sys-load>
+                    <a class="sys-return" href="word-search.html">
+                        <span class="sys-go" aria-hidden="true" data-flicker><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H6M12 6l-6 6 6 6"/></svg></span>
+                        <span class="sys-return__label">RETURN <b>//</b> WORD SEARCH</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="sys-foot" data-sys-load>
+            <i class="sys-cross sys-cross--l sys-cross--top" aria-hidden="true"></i>
+            <i class="sys-cross sys-cross--r sys-cross--top" aria-hidden="true"></i>
+            <div class="sys-foot__grid">
+                <div>
+                    <p class="sys-foot__sys">404 // LIFE SYSTEM<br>ACCESS : GRANTED<br>STATUS : ONLINE<span class="sys-foot__block" aria-hidden="true"></span></p>
+                    <span class="sys-bar-mark" aria-hidden="true" data-flicker></span>
+                </div>
+                <a class="sys-foot__top" href="#top" aria-label="ページの先頭へ">
+                    <svg viewBox="0 0 12 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 17V2M1 7l5-5 5 5"/></svg>
+                    <span>SCROLL</span>
+                </a>
+                <p class="sys-foot__right"><span data-glitch="soft">GARAGE No.404</span><span class="sys-bar-mark" aria-hidden="true"></span></p>
+            </div>
+            <p class="sys-foot__copy">© 404 LIFE</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,344 @@
+/* ==========================================================
+   404 LIFE SYSTEM — PLAYGROUND（FILE 05）専用パーツ
+   共通：system.css ／ ファイルページ共通：about.css ／ カード：gear.css
+   ========================================================== */
+
+/* ---------- サイト内リンクのカード（→）：gear.css の .sys-gear を流用 ---------- */
+
+.sys-gear.sys-gear--in::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ccff00' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M12 6l6 6-6 6'/%3E%3C/svg%3E");
+}
+
+.sys-gear.sys-gear--in:active::after,
+.sys-gear.sys-gear--in:focus-visible::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M12 6l6 6-6 6'/%3E%3C/svg%3E") center / 20px no-repeat, var(--sys-accent);
+}
+
+@media (hover: hover) {
+  .sys-gear.sys-gear--in:hover::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M12 6l6 6-6 6'/%3E%3C/svg%3E") center / 20px no-repeat, var(--sys-accent);
+  }
+}
+
+/* カードの補足（盤面の大きさなど） */
+.sys-gear__meta {
+  grid-column: 1;
+  font-family: var(--sys-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #9a9a9a;
+}
+
+.sys-gear-list--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ---------- 文字探し：看板 ---------- */
+
+.ws-logo {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  margin: 0 auto 14px;
+}
+
+.ws-how {
+  margin: 0 0 16px;
+  font-family: var(--sys-sans);
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #cfcfcf;
+}
+
+/* ---------- 検索窓 ---------- */
+
+.ws-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin: 0 0 8px;
+  border: 1px solid rgba(var(--sys-accent-rgb), 0.85);
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 14px rgba(var(--sys-accent-rgb), 0.12);
+}
+
+.ws-search__input {
+  min-width: 0;
+  height: 52px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--sys-sans);
+  font-weight: 700;
+  font-size: 18px; /* 16px以上：iPhoneで入力時に拡大されない */
+  letter-spacing: 0.08em;
+  color: var(--sys-white);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.ws-search__input::placeholder {
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #6f6f6f;
+}
+
+.ws-search:focus-within {
+  box-shadow: var(--sys-glow);
+}
+
+.ws-search__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 52px;
+  padding: 0 16px;
+  border: 0;
+  border-left: 1px solid rgba(var(--sys-accent-rgb), 0.85);
+  border-radius: 0;
+  background: var(--sys-accent);
+  font-family: var(--sys-mono);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: #000;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.ws-search__btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ws-search__btn:active,
+.ws-search__btn:focus-visible {
+  background: #e6ff66;
+  outline: none;
+}
+
+.is-miss .ws-search {
+  animation: ws-shake 0.32s;
+}
+
+@keyframes ws-shake {
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+
+/* 結果のひとこと */
+.ws-msg {
+  min-height: 22px;
+  margin: 0 0 14px;
+  font-family: var(--sys-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #8a8a8a;
+}
+
+.ws-msg[data-tone="hit"] { color: var(--sys-accent); text-shadow: 0 0 8px rgba(var(--sys-accent-rgb), 0.6); }
+.ws-msg[data-tone="miss"] { color: #ff6b5a; }
+.ws-msg[data-tone="info"] { color: #cfcfcf; }
+
+/* ---------- 盤面 ---------- */
+
+.ws-board {
+  margin: 0 0 22px;
+  padding: 8px;
+  border: 1px solid rgba(var(--sys-accent-rgb), 0.85);
+  background: rgba(10, 12, 10, 0.88);
+}
+
+.ws-grid {
+  display: grid;
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+  max-width: 600px;
+  margin: 0 auto;
+  border-top: 1px solid #2c2c2c;
+  border-left: 1px solid #2c2c2c;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ws-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-right: 1px solid #2c2c2c;
+  border-bottom: 1px solid #2c2c2c;
+  font-family: var(--sys-sans);
+  font-weight: 900;
+  font-size: clamp(12px, 4.1vw, 26px);
+  line-height: 1;
+  color: #f2f2f2;
+  transition: background-color 0.2s, color 0.2s, text-shadow 0.2s;
+}
+
+/* 発見したマス：発光 */
+.ws-cell.is-lit {
+  position: relative;
+  z-index: 1;
+  background: rgba(var(--sys-accent-rgb), 0.2);
+  color: var(--sys-accent);
+  text-shadow: 0 0 6px rgba(var(--sys-accent-rgb), 0.9), 0 0 14px rgba(var(--sys-accent-rgb), 0.5);
+  box-shadow: inset 0 0 0 1px rgba(var(--sys-accent-rgb), 0.55), 0 0 10px rgba(var(--sys-accent-rgb), 0.35);
+}
+
+/* いま見つけた（またはタップした）ワード：強く点滅してから落ち着く */
+.ws-cell.is-new {
+  animation: ws-pulse 1.4s ease-out;
+}
+
+@keyframes ws-pulse {
+  0%, 30%, 60% { background: rgba(var(--sys-accent-rgb), 0.85); color: #000; text-shadow: none; }
+  15%, 45% { background: rgba(var(--sys-accent-rgb), 0.25); }
+  100% { background: rgba(var(--sys-accent-rgb), 0.2); }
+}
+
+/* ---------- 発見リスト ---------- */
+
+.ws-found__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  padding: 0 0 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.ws-found__title {
+  margin: 0;
+  font-family: var(--sys-mono);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--sys-accent);
+}
+
+.ws-icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.ws-clear-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(var(--sys-accent-rgb), 0.85);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.6);
+  font-family: var(--sys-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--sys-accent);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.ws-clear-all:disabled {
+  border-color: #3a3a3a;
+  color: #5f5f5f;
+  cursor: default;
+}
+
+.ws-clear-all:not(:disabled):active,
+.ws-clear-all:not(:disabled):focus-visible {
+  background: var(--sys-accent);
+  color: #000;
+  outline: none;
+}
+
+@media (hover: hover) {
+  .ws-clear-all:not(:disabled):hover { background: var(--sys-accent); color: #000; }
+}
+
+.ws-found__empty {
+  margin: 0;
+  font-family: var(--sys-sans);
+  font-weight: 700;
+  font-size: 13px;
+  color: #7a7a7a;
+}
+
+.ws-found__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ws-chip {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid rgba(var(--sys-accent-rgb), 0.6);
+  border-left: 2px solid var(--sys-accent);
+  background: rgba(var(--sys-accent-rgb), 0.08);
+}
+
+.ws-chip__word {
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  font-family: var(--sys-sans);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 40px;
+  letter-spacing: 0.04em;
+  color: var(--sys-white);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.ws-chip__erase {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border: 0;
+  border-left: 1px solid rgba(var(--sys-accent-rgb), 0.35);
+  border-radius: 0;
+  background: none;
+  color: var(--sys-accent);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.ws-chip__erase:active,
+.ws-chip__erase:focus-visible {
+  background: var(--sys-accent);
+  color: #000;
+  outline: none;
+}
+
+@media (hover: hover) {
+  .ws-chip__erase:hover { background: var(--sys-accent); color: #000; }
+}
+
+/* 40語すべて発見 */
+[data-complete] .ws-board {
+  box-shadow: var(--sys-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ws-cell.is-new,
+  .is-miss .ws-search { animation: none; }
+}
+
+@media (max-width: 359px) {
+  .ws-board { padding: 5px; }
+  .ws-search__btn { padding: 0 12px; }
+  .ws-search__btn span { display: none; }
+}
+
+/* 補足付きカード：→ を3行ぶんの高さで中央に */
+.sys-gear.sys-gear--in::after { grid-row: 1 / span 3; }
